@@ -29,8 +29,8 @@ return packer.startup(
         use "terrortylor/nvim-comment"
 
         -- snippet support
-        use "hrsh7th/vim-vsnip"
-        use "rafamadriz/friendly-snippets"
+        --use "hrsh7th/vim-vsnip"
+        --use "rafamadriz/friendly-snippets"
 
         -- file managing , picker etc
         use "kyazdani42/nvim-tree.lua"
@@ -43,8 +43,8 @@ return packer.startup(
         use "glepnir/dashboard-nvim"
         use "tweekmonster/startuptime.vim"
         use "907th/vim-auto-save"
-        use "karb94/neoscroll.nvim"
-        use "kdav5758/TrueZen.nvim"
+        -- use "karb94/neoscroll.nvim"
+        --use "kdav5758/TrueZen.nvim"
         use "folke/which-key.nvim"
         use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
     end,

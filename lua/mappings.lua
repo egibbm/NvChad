@@ -17,23 +17,23 @@ map("v", "x", [=[ "_x ]=], opt)
 
  this line too ]]
 -- OPEN TERMINALS --
-map("n", "<C-l>", [[<Cmd>vnew term://bash <CR>]], opt) -- term over right
-map("n", "<C-x>", [[<Cmd> split term://bash | resize 10 <CR>]], opt) --  term bottom
-map("n", "<C-t>t", [[<Cmd> tabnew | term <CR>]], opt) -- term newtab
+--map("n", "<C-l>", [[<Cmd>vnew term://bash <CR>]], opt) -- term over right
+--map("n", "<C-x>", [[<Cmd> split term://bash | resize 10 <CR>]], opt) --  term bottom
+--map("n", "<C-t>t", [[<Cmd> tabnew | term <CR>]], opt) -- term newtab
 
 -- COPY EVERYTHING --
-map("n", "<C-a>", [[ <Cmd> %y+<CR>]], opt)
+-- map("n", "<C-a>", [[ <Cmd> %y+<CR>]], opt)
 
 -- toggle numbers ---
-map("n", "<leader>n", [[ <Cmd> set nu!<CR>]], opt)
+-- map("n", "<leader>n", [[ <Cmd> set nu!<CR>]], opt)
 
 -- toggle truezen.nvim's ataraxis and minimalist mode
-map("n", "<leader>z", [[ <Cmd> TZAtaraxis<CR>]], opt)
-map("n", "<leader>m", [[ <Cmd> TZMinimalist<CR>]], opt)
+-- map("n", "<leader>z", [[ <Cmd> TZAtaraxis<CR>]], opt)
+-- map("n", "<leader>m", [[ <Cmd> TZMinimalist<CR>]], opt)
 
-map("n", "<C-s>", [[ <Cmd> w <CR>]], opt)
+-- map("n", "<C-s>", [[ <Cmd> w <CR>]], opt)
 -- vim.cmd("inoremap jh <Esc>")
 
 -- Commenter Keybinding
-map("n", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
-map("v", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
+map("n", "<C-_>", ":CommentToggle<CR>", {noremap = true, silent = true})
+map("v", "<C-_>", ":CommentToggle<CR>", {noremap = true, silent = true})

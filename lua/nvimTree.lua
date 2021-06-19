@@ -47,8 +47,17 @@ g.nvim_tree_icons = {
 
 vim.api.nvim_set_keymap(
     "n",
-    "<C-n>",
+    "<leader>g",
     ":NvimTreeToggle<CR>",
+    {
+        noremap = true,
+        silent = true
+    }
+)
+vim.api.nvim_set_keymap(
+    "n",
+    "<leader>G",
+    ":NvimTreeFindFile<CR>",
     {
         noremap = true,
         silent = true

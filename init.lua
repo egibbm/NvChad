@@ -6,7 +6,7 @@ require "top-bufferline"
 require "statusline"
 
 require("colorizer").setup()
-require("neoscroll").setup() -- smooth scroll
+--require("neoscroll").setup() -- smooth scroll
 
 -- lsp stuff
 require "nvim-lspconfig"
@@ -15,7 +15,7 @@ require "compe-completion"
 local cmd = vim.cmd
 local g = vim.g
 
-g.mapleader = " "
+--g.mapleader = "\\"
 g.auto_save = 0
 
 -- colorscheme related stuff
@@ -59,7 +59,7 @@ vim.api.nvim_exec(
     false
 )
 
-require "zenmode"
+--require "zenmode"
 require "whichkey"
 require "dashboard"
 require("nvim_comment").setup()
