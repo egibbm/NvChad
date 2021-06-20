@@ -11,9 +11,13 @@ opt("o", "ruler", false)
 opt("o", "showmode", false)
 opt("o", "hidden", true)
 opt("o", "ignorecase", true)
-opt("o", "splitbelow", true)
+opt("o", "smartcase", true)
 opt("o", "splitright", true)
+opt("o", "splitbelow", true)
 opt("o", "termguicolors", true)
+opt("o", "gdefault", true)
+opt("o", "autoread", true)
+-- opt("o", "wildmode", "list:longest,full")
 opt("w", "cul", true)
 
 opt("o", "mouse", "a")
@@ -28,7 +32,7 @@ opt("o", "timeoutlen", 500)
 -- Numbers
 opt("w", "number", true)
 opt("o", "numberwidth", 2)
--- opt("w", "relativenumber", true)
+opt("w", "relativenumber", true)
 
 -- for indenline
 opt("b", "expandtab", true)
@@ -46,6 +50,15 @@ function M.has_width_gt(cols)
     -- Check if the windows width is greater than a given number of columns
     return vim.fn.winwidth(0) / 2 > cols
 end
+
 -- file extension specific tabbing
-vim.cmd([[autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4]])
+vim.cmd([[
+  autocmd Filetype python     setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+  autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
+  autocmd FileType less       setlocal tabstop=2 shiftwidth=2 softtabstop=2
+  autocmd FileType scss       setlocal tabstop=2 shiftwidth=2 softtabstop=2
+  autocmd FileType xbt.php    setlocal tabstop=2 shiftwidth=2 softtabstop=2
+  autocmd Filetype gitcommit  setlocal spell textwidth=72
+]])
+
 return M

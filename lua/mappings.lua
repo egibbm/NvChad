@@ -41,6 +41,9 @@ map("n", "<Leader>W", ":set nowrap<cr>", opt)
 -- close all other windows (in the current tab)
 map("n", "gW", ":only<cr>", opt)
 
+-- delete all buffers
+map("", "<Leader>d", ":bufdo bd<cr>", opt)
+
 -- shortcuts for frequenly used files
 map("n", "gs", ":e db/schema.rb<cr>", opt)
 map("n", "gr", ":e config/routes.rb<cr>", opt)
@@ -71,9 +74,6 @@ map("", "<Leader>c", ":StripTrailingWhitespaces<cr>", opt)
 
 -- compress excess whitespace on current line
 map("", "<Leader>e", ":s/\\v(\\S+)\\s+/\\1 /<cr>:nohl<cr>", opt)
-
--- delete all buffers
-map("", "<Leader>d", ":bufdo bd<cr>", opt)
 
 -- map spacebar to clear search highlight
 map("n", "<Leader><space>", ":noh<cr>", opt)
