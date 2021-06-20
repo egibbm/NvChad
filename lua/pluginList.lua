@@ -40,6 +40,7 @@ return packer.startup(
         use "nvim-lua/popup.nvim"
         use "kevinhwang91/nvim-bqf"
         use "tpope/vim-fugitive"
+        use "junegunn/gv.vim"
 
         -- misc
         use "glepnir/dashboard-nvim"
