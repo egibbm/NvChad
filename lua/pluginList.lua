@@ -38,6 +38,7 @@ return packer.startup(
         use "nvim-telescope/telescope.nvim"
         use "nvim-telescope/telescope-media-files.nvim"
         use "nvim-lua/popup.nvim"
+        use "TimUntersberger/neogit"
 
         -- misc
         use "glepnir/dashboard-nvim"

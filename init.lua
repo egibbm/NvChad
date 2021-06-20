@@ -63,3 +63,4 @@ vim.api.nvim_exec(
 require "whichkey"
 require "dashboard"
 require("nvim_comment").setup()
+require("neogit").setup()
