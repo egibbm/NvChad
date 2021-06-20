@@ -52,10 +52,10 @@ require("lspkind").init()
 -- hide line numbers , statusline in specific buffers!
 vim.api.nvim_exec(
     [[
-   au BufEnter term://* setlocal nonumber
-   au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif
-   au BufEnter term://* set laststatus=0 
-]],
+       au BufEnter term://* setlocal nonumber
+       au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif
+       au BufEnter term://* set laststatus=0 
+    ]],
     false
 )
 
@@ -63,4 +63,3 @@ vim.api.nvim_exec(
 require "whichkey"
 require "dashboard"
 require("nvim_comment").setup()
-require("neogit").setup()
