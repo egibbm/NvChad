@@ -11,9 +11,25 @@ return packer.startup(
         use "norcalli/nvim-colorizer.lua"
 
         -- lang stuff
-        use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
+        use {
+            "nvim-treesitter/nvim-treesitter",
+            event = "BufRead",
+            config = function()
+                require("treesitter-nvim").config()
+            end
+        }
+
         use "neovim/nvim-lspconfig"
-        use "hrsh7th/nvim-compe"
+
+        -- load compe in insert mode only
+        use {
+            "hrsh7th/nvim-compe",
+            event = "InsertEnter",
+            config = function()
+                require("compe-completion").config()
+            end
+        }
+
         use "onsails/lspkind-nvim"
         use "sbdchd/neoformat"
         use "nvim-lua/plenary.nvim"
@@ -32,22 +48,38 @@ return packer.startup(
         use "lewis6991/gitsigns.nvim"
         use "akinsho/nvim-bufferline.lua"
         use "glepnir/galaxyline.nvim"
-        use "windwp/nvim-autopairs"
-        use "alvan/vim-closetag"
         use "mg979/vim-visual-multi"
         use "troydm/zoomwintab.vim"
         use "tpope/vim-unimpaired"
         use "tpope/vim-surround"
 
-        -- Comment
-        use "terrortylor/nvim-comment"
+        use {
+            "windwp/nvim-autopairs",
+            event = "InsertEnter",
+            config = function()
+                require("nvim-autopairs").setup()
+            end
+        }
+        --   use "alvan/vim-closetag" -- for html
 
-        -- snippet support
-        --use "hrsh7th/vim-vsnip"
-        --use "rafamadriz/friendly-snippets"
+        use "terrortylor/nvim-comment" -- snippet support
+
+        -- snippet
+        -- use {
+        --     "hrsh7th/vim-vsnip",
+        --     event = "InsertCharPre"
+        -- }
+        -- use "rafamadriz/friendly-snippets"
 
         -- file managing , picker etc
-        use "kyazdani42/nvim-tree.lua"
+        use {
+            "kyazdani42/nvim-tree.lua",
+            cmd = "NvimTreeToggle",
+            config = function()
+                require("nvimTree").config()
+            end
+        }
+
         use "kyazdani42/nvim-web-devicons"
         use "nvim-telescope/telescope.nvim"
         use "nvim-telescope/telescope-media-files.nvim"
@@ -59,9 +91,17 @@ return packer.startup(
         -- misc
         use "glepnir/dashboard-nvim"
         use "tweekmonster/startuptime.vim"
-        use "907th/vim-auto-save"
+
+        -- load autosave plugin only if its globally enabled
+        use {
+            "907th/vim-auto-save",
+            cond = function()
+                return vim.g.auto_save == 1
+            end
+        }
+
         -- use "karb94/neoscroll.nvim"
-        --use "kdav5758/TrueZen.nvim"
+        -- use "kdav5758/TrueZen.nvim"
         use "folke/which-key.nvim"
         use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
     end,
