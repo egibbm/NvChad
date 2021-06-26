@@ -184,21 +184,6 @@ map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 map("i", "<CR>", "v:lua.completions()", {expr = true})
 
 -- Mappings for nvimtree
-vim.api.nvim_set_keymap(
-    "n",
-    "<leader>g",
-    ":NvimTreeToggle<CR>",
-    {
-        noremap = true,
-        silent = true
-    }
-)
-vim.api.nvim_set_keymap(
-    "n",
-    "<leader>G",
-    ":NvimTreeFindFile<CR>",
-    {
-        noremap = true,
-        silent = true
-    }
-)
+map("n", "<leader>g", ":NvimTreeToggle<CR>",   { noremap = true, silent = true })
+map("n", "<leader>G", ":NvimTreeFindFile<CR>", { noremap = true, silent = true })
+
