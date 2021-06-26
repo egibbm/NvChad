@@ -44,6 +44,19 @@ return packer.startup(
         use {"tpope/vim-rails", opt = true, requires = {
           "tpope/vim-dispatch", 
           "tpope/vim-abolish"}}
+        -- use "mattn/emmet-vim"
+        -- use "ap/vim-css-color"
+        -- use "digitaltoad/vim-pug"
+        -- use "leafgarland/typescript-vim"
+        -- use "groenewege/vim-less"
+        -- use "mustache/vim-mustache-handlebars"
+        -- use "kchmck/vim-coffee-script"
+        -- use "tpope/vim-markdown"
+        -- use "xsbeats/vim-blade"
+        -- use "mxw/vim-xhp"
+        -- use "stephpy/vim-php-cs-fixer"
+        -- use "arrufat/vala.vim"
+        -- use "sophacles/vim-bundle-mako"
 
         use "lewis6991/gitsigns.nvim"
         use "akinsho/nvim-bufferline.lua"
@@ -52,6 +65,8 @@ return packer.startup(
         use "troydm/zoomwintab.vim"
         use "tpope/vim-unimpaired"
         use "tpope/vim-surround"
+        use "nathanaelkane/vim-indent-guides"
+        -- use "easymotion/vim-easymotion"
 
         use {
             "windwp/nvim-autopairs",
@@ -87,6 +102,8 @@ return packer.startup(
         use "kevinhwang91/nvim-bqf"
         use "tpope/vim-fugitive"
         use "junegunn/gv.vim"
+        use {"rcarriga/vim-ultest", run = ":UpdateRemotePlugins", requires = {
+          "vim-test/vim-test"}}
 
         -- misc
         use "glepnir/dashboard-nvim"
@@ -104,6 +121,8 @@ return packer.startup(
         -- use "kdav5758/TrueZen.nvim"
         use "folke/which-key.nvim"
         use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
+        -- use "majutsushi/tagbar"
+        -- use "godlygeek/tabular"
     end,
     {
         display = {

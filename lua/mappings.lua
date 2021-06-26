@@ -187,3 +187,7 @@ map("i", "<CR>", "v:lua.completions()", {expr = true})
 map("n", "<leader>g", ":NvimTreeToggle<CR>",   { noremap = true, silent = true })
 map("n", "<leader>G", ":NvimTreeFindFile<CR>", { noremap = true, silent = true })
 
+-- require 'janko-m/vim-test'
+
+map("n", "<leader>T", ":TestFile<CR>",    { silent = true })
+map("n", "<leader>F", ":TestNearest<CR>", { silent = true })
