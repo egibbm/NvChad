@@ -11,7 +11,7 @@ return packer.startup(
         use "norcalli/nvim-colorizer.lua"
 
         -- lang stuff
-        use "nvim-treesitter/nvim-treesitter"
+        use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
         use "neovim/nvim-lspconfig"
         use "hrsh7th/nvim-compe"
         use "onsails/lspkind-nvim"
@@ -34,6 +34,10 @@ return packer.startup(
         use "glepnir/galaxyline.nvim"
         use "windwp/nvim-autopairs"
         use "alvan/vim-closetag"
+        use "mg979/vim-visual-multi"
+        use "troydm/zoomwintab.vim"
+        use "tpope/vim-unimpaired"
+        use "tpope/vim-surround"
 
         -- Comment
         use "terrortylor/nvim-comment"
