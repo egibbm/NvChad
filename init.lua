@@ -64,3 +64,4 @@ require "whichkey"
 require "dashboard"
 require("nvim_comment").setup()
 require('bqf-nvim')
+require("rails")

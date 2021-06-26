@@ -18,6 +18,16 @@ return packer.startup(
         use "sbdchd/neoformat"
         use "nvim-lua/plenary.nvim"
         use "kabouzeid/nvim-lspinstall"
+        use "slim-template/vim-slim"
+        use {'tpope/vim-dispatch', opt = true, cmd = {'Dispatch', 'Make', 'Focus', 'Start'}}
+        use {"vim-ruby/vim-ruby", opt = true, requires = {
+          "thoughtbot/vim-rspec", 
+          "tpope/vim-dispatch", 
+          "tpope/vim-rake", 
+          "vim-scripts/ruby-matchit"}}
+        use {"tpope/vim-rails", opt = true, requires = {
+          "tpope/vim-dispatch", 
+          "tpope/vim-abolish"}}
 
         use "lewis6991/gitsigns.nvim"
         use "akinsho/nvim-bufferline.lua"
