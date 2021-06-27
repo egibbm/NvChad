@@ -11,6 +11,8 @@ M.config = function()
             "bash",
             "lua",
             "json",
+            "ruby",
+            "yaml",
             "python"
             -- "rust",
             -- "go"
