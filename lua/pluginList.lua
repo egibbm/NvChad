@@ -65,7 +65,6 @@ return packer.startup(
         use "troydm/zoomwintab.vim"
         use "tpope/vim-unimpaired"
         use "tpope/vim-surround"
-        use "nathanaelkane/vim-indent-guides"
         -- use "easymotion/vim-easymotion"
 
         use {
@@ -118,7 +117,7 @@ return packer.startup(
         }
 
         -- use "karb94/neoscroll.nvim"
-        -- use "kdav5758/TrueZen.nvim"
+        use "kdav5758/TrueZen.nvim"
         use "folke/which-key.nvim"
         use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
         -- use "majutsushi/tagbar"

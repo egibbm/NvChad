@@ -31,7 +31,7 @@ opt("o", "timeoutlen", 500)
 
 -- Numbers
 opt("w", "number", true)
-opt("o", "numberwidth", 2)
+opt("w", "numberwidth", 2)
 opt("w", "relativenumber", true)
 
 -- for indenline
