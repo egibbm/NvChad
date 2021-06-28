@@ -44,6 +44,7 @@ return packer.startup(
         use {"tpope/vim-rails", opt = true, requires = {
           "tpope/vim-dispatch", 
           "tpope/vim-abolish"}}
+        use "mfukar/robotframework-vim"
         -- use "mattn/emmet-vim"
         -- use "ap/vim-css-color"
         -- use "digitaltoad/vim-pug"
