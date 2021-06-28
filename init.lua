@@ -55,7 +55,7 @@ vim.api.nvim_exec(
     false
 )
 
---require "zenmode"
+require "zenmode"
 require "whichkey"
 require "dashboard"
 require("nvim_comment").setup()
