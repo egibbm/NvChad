@@ -1,5 +1,5 @@
 local function map(mode, lhs, rhs, opts)
-    local options = {noremap = true}
+    local options = {noremap = true, silent = true}
     if opts then
         options = vim.tbl_extend("force", options, opts)
     end
@@ -30,10 +30,10 @@ map("v", "x", [=[ "_x ]=], opt)
 -- map("n", "<leader>n", [[ <Cmd> set nu!<CR>]], opt)
 
 -- Truezen.nvim
-map("n", "<leader>z", [[ <Cmd> TZAtaraxis<CR>]], opt)
-map("n", "<leader>m", [[ <Cmd> TZMinimalist<CR>]], opt)
+map("n", "<leader>z", ":TZAtaraxis<CR>", opt)
+map("n", "<leader>m", ":TZMinimalist<CR>", opt)
 
--- map("n", "<C-s>", [[ <Cmd> w <CR>]], opt)
+-- map("n", "<C-s>", ":w <CR>", opt)
 -- vim.cmd("inoremap jh <Esc>")
 
 -- easy wrap toggling
@@ -52,8 +52,10 @@ map("n", "gr", ":e config/routes.rb<cr>", opt)
 map("n", "gm", ":e Gemfile<cr>", opt)
 
 -- Commenter Keybinding
-map("n", "<C-_>", ":CommentToggle<CR>", {noremap = true, silent = true})
-map("v", "<C-_>", ":CommentToggle<CR>", {noremap = true, silent = true})
+map("n", "<C-_>", ":CommentToggle<CR>", opt)
+map("v", "<C-_>", ":CommentToggle<CR>", opt)
+
+map("n", "<C-q>", ":bp<bar>sp<bar>bn<bar>bd! <CR>", opt)
 
 -- insert blank lines without going into insert mode
 map("n", "go", "o<esc>", opt)
@@ -184,10 +186,41 @@ map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 map("i", "<CR>", "v:lua.completions()", {expr = true})
 
 -- Mappings for nvimtree
-map("n", "<leader>g", ":NvimTreeToggle<CR>",   { noremap = true, silent = true })
-map("n", "<leader>G", ":NvimTreeFindFile<CR>", { noremap = true, silent = true })
+map("n", "<leader>g", ":NvimTreeToggle<CR>",   opt)
+map("n", "<leader>G", ":NvimTreeFindFile<CR>", opt)
 
 -- require 'janko-m/vim-test'
 
 map("n", "<leader>T", ":TestFile<CR>",    { silent = true })
 map("n", "<leader>F", ":TestNearest<CR>", { silent = true })
+
+-- format code
+map("n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], opt)
+
+-- dashboard stuff
+map("n", "<Leader>fw", [[<Cmd> Telescope live_grep<CR>]], opt)
+map("n", "<Leader>db", [[<Cmd> Dashboard<CR>]], opt)
+map("n", "<Leader>fn", [[<Cmd> DashboardNewFile<CR>]], opt)
+map("n", "<Leader>bm", [[<Cmd> DashboardJumpMarks<CR>]], opt)
+map("n", "<C-s>l", [[<Cmd> SessionLoad<CR>]], opt)
+map("n", "<C-s>s", [[<Cmd> SessionSave<CR>]], opt)
+
+-- Telescope
+map("n", "<Leader>gt", [[<Cmd> Telescope git_status <CR>]], opt)
+map("n", "<Leader>cm", [[<Cmd> Telescope git_commits <CR>]], opt)
+map("n", "<Leader>ff", [[<Cmd> Telescope find_files <CR>]], opt)
+--map("n", "<Leader>t",  [[<Cmd> Telescope find_files <CR>]], opt)
+map("n", "<C-p>",      [[<Cmd> Telescope find_files <CR>]], opt)
+map("n", "<Leader>fp", [[<Cmd>lua require('telescope').extensions.media_files.media_files()<CR>]], opt)
+map("n", "<Leader>fb", [[<Cmd>Telescope buffers<CR>]], opt)
+map("n", "<C-b>",      [[<Cmd>Telescope buffers<CR>]], opt)
+map("n", "<Leader>fh", [[<Cmd>Telescope help_tags<CR>]], opt)
+map("n", "<Leader>fo", [[<Cmd>Telescope oldfiles<CR>]], opt)
+
+-- bufferline tab stuff
+map("n", "<S-t>", ":tabnew<CR>", opt) -- new tab
+map("n", "<S-x>", ":bd!<CR>", opt) -- close tab
+
+-- move between tabs
+map("n", "<TAB>", [[<Cmd>BufferLineCycleNext<CR>]], opt)
+map("n", "<S-TAB>", [[<Cmd>BufferLineCyclePrev<CR>]], opt)

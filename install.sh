@@ -4,8 +4,6 @@ get_platform() {
   case "$(uname -s)" in
   Linux*) platform=Linux ;;
   Darwin*) platform=Mac ;;
-  CYGWIN*) platform=Cygwin ;;
-  MINGW*) platform=MinGw ;;
   *) platform="UNKNOWN:${unameOut}" ;;
   esac
   echo $platform
@@ -13,14 +11,15 @@ get_platform() {
 
 echo "installing packer"
 
-if [ ! -d ~/.local/share/nvim/site/pack/packer ]; then
-  echo "Installing packer"
-  git clone https://github.com/wbthomason/packer.nvim \
-    ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-  echo
-  echo "packer installed!"
-  echo
+if [ -d ~/.local/share/nvim/site/pack/packer ]; then
+  echo "Clearning previous packer installs"
+  rm -rf ~/.local/share/nvim/site/pack
 fi
+
+echo "\n=> Installing packer"
+git clone https://github.com/wbthomason/packer.nvim \
+  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+echo "=> packer installed!"
 
 echo "Linking config"
 echo "old nvim config will be changed to nvim.bak if exists! :0"
@@ -49,9 +48,8 @@ else
   sed -i "s/bash/$shellname/g" ~/.config/nvim/lua/mappings.lua
 fi
 
-echo "shell changed to $shellname on nvim successfully!"
-echo
-echo "neovim will open with some errors , just press enter" && sleep 1
+echo "\n=> shell changed to $shellname on nvim successfully!"
+echo "\n=> neovim will open with some errors , just press enter" && sleep 1
 
 # install all plugins + compile them
 nvim +PackerSync
