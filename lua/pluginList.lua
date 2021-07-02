@@ -90,6 +90,7 @@ return packer.startup(
           "tpope/vim-dispatch",
           "tpope/vim-abolish"}}
         use "mfukar/robotframework-vim"
+        use "mMontu/vim-RobotUtils"
         -- use "mattn/emmet-vim"
         -- use "ap/vim-css-color"
         -- use "digitaltoad/vim-pug"
