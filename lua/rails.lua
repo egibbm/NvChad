@@ -1,4 +1,4 @@
- local function map(mode, lhs, rhs, opts)
+local function map(mode, lhs, rhs, opts)
     local options = {noremap = true}
     if opts then
         options = vim.tbl_extend("force", options, opts)
@@ -11,13 +11,13 @@ local opt = {}
 -- key mappings
 
 -- require tpope/vim-rails
-map("", "<Leader>oc", ":Rcontroller<Space>", opt)
-map("", "<Leader>ov", ":Rview<Space>", opt)
-map("", "<Leader>om", ":Rmodel<Space>", opt)
-map("", "<Leader>oh", ":Rhelper<Space>", opt)
-map("", "<Leader>oj", ":Rjavascript<Space>", opt)
-map("", "<Leader>os", ":Rstylesheet<Space>", opt)
-map("", "<Leader>oi", ":Rintegration<Space>", opt)
+map("", "<Leader>oc", ":Econtroller<Space>", opt)
+map("", "<Leader>ov", ":Eview<Space>", opt)
+map("", "<Leader>om", ":Emodel<Space>", opt)
+map("", "<Leader>oh", ":Ehelper<Space>", opt)
+map("", "<Leader>oj", ":Ejavascript<Space>", opt)
+map("", "<Leader>os", ":Estylesheet<Space>", opt)
+map("", "<Leader>oi", ":Eintegrationtest<Space>", opt)
 
 -- require surround
 -- # to surround with ruby string interpolation

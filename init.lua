@@ -29,5 +29,4 @@ vim.api.nvim_exec(
     false
 )
 
-require('bqf-nvim')
 require("rails")

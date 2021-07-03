@@ -81,14 +81,29 @@ return packer.startup(
 
         use "slim-template/vim-slim"
         use {'tpope/vim-dispatch', opt = true, cmd = {'Dispatch', 'Make', 'Focus', 'Start'}}
-        use {"vim-ruby/vim-ruby", opt = true, requires = {
-          "thoughtbot/vim-rspec",
-          "tpope/vim-dispatch",
-          "tpope/vim-rake",
-          "vim-scripts/ruby-matchit"}}
-        use {"tpope/vim-rails", opt = true, requires = {
-          "tpope/vim-dispatch",
-          "tpope/vim-abolish"}}
+        use {
+          "vim-ruby/vim-ruby", 
+          opt = true, 
+          ft = 'ruby',
+          requires = {
+            "thoughtbot/vim-rspec",
+            "tpope/vim-dispatch",
+            "tpope/vim-rake",
+            "vim-scripts/ruby-matchit"
+          }
+        }
+
+        use {
+          "tpope/vim-rails",
+          opt = true,
+          ft = 'ruby',
+          requires = {
+            "vim-ruby/vim-ruby",
+            "tpope/vim-dispatch",
+            "tpope/vim-abolish"
+          }
+        }
+
         use "mfukar/robotframework-vim"
         use "mMontu/vim-RobotUtils"
         -- use "mattn/emmet-vim"
@@ -167,8 +182,14 @@ return packer.startup(
                 require("dashboard").config()
             end
         }
+        use {
+          "kevinhwang91/nvim-bqf",
+          event = "BufRead",
+          config = function()
+            require("bqf-nvim").config()
+          end
+        }
 
-        use "kevinhwang91/nvim-bqf"
         use "tpope/vim-fugitive"
         use "junegunn/gv.vim"
         use {"rcarriga/vim-ultest", run = ":UpdateRemotePlugins", requires = {
