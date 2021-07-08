@@ -73,7 +73,6 @@ return packer.startup(
         -- file managing , picker etc
         use {
             "kyazdani42/nvim-tree.lua",
-            cmd = {"NvimTreeToggle", "NvimTreeFindFile"},
             config = function()
                 require("nvimTree").config()
             end
@@ -104,8 +103,9 @@ return packer.startup(
           }
         }
 
-        use "mfukar/robotframework-vim"
-        use "mMontu/vim-RobotUtils"
+        use {"mfukar/robotframework-vim", ft = 'robot'}
+        use {"mMontu/vim-RobotUtils", ft = 'robot'}
+
         -- use "mattn/emmet-vim"
         -- use "ap/vim-css-color"
         -- use "digitaltoad/vim-pug"
@@ -124,6 +124,7 @@ return packer.startup(
         use "troydm/zoomwintab.vim"
         use "tpope/vim-unimpaired"
         use "tpope/vim-surround"
+        use "tpope/vim-repeat"
         -- use "easymotion/vim-easymotion"
 
         use "kyazdani42/nvim-web-devicons"
@@ -182,6 +183,7 @@ return packer.startup(
                 require("dashboard").config()
             end
         }
+
         use {
           "kevinhwang91/nvim-bqf",
           event = "BufRead",
@@ -192,8 +194,13 @@ return packer.startup(
 
         use "tpope/vim-fugitive"
         use "junegunn/gv.vim"
-        use {"rcarriga/vim-ultest", run = ":UpdateRemotePlugins", requires = {
-          "vim-test/vim-test"}}
+        use {
+          "rcarriga/vim-ultest", 
+          run = ":UpdateRemotePlugins",
+          requires = {
+            "vim-test/vim-test"
+          }
+        }
 
         use {"tweekmonster/startuptime.vim", cmd = "StartupTime"}
 
