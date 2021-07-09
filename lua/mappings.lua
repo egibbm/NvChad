@@ -56,8 +56,6 @@ map("n", "gm", ":e Gemfile<cr>", opt)
 map("n", "<C-_>", ":CommentToggle<CR>", opt)
 map("v", "<C-_>", ":CommentToggle<CR>", opt)
 
-map("n", "<C-q>", ":bp<bar>sp<bar>bn<bar>bd! <CR>", opt)
-
 -- insert blank lines without going into insert mode
 map("n", "go", "o<esc>", opt)
 map("n", "gO", "O<esc>", opt)
@@ -135,7 +133,6 @@ map("", "<Leader>9", "9gt", opt)
 map("", "<Leader>0", ":tablast<cr>", opt)
 
 -- compe stuff
-
 local t = function(str)
     return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
