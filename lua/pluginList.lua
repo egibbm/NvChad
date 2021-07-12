@@ -48,12 +48,12 @@ return packer.startup(
 
         use {
             "kabouzeid/nvim-lspinstall",
-            event = "VimEnter"
+            event = "BufRead"
         }
 
         use {
             "neovim/nvim-lspconfig",
-            event = "BufRead",
+            after = "nvim-lspinstall",
             config = function()
                 require("plugins.lspconfig").config()
             end
@@ -84,7 +84,10 @@ return packer.startup(
                         require("plugins.compe").snippets()
                     end
                 },
-                "rafamadriz/friendly-snippets"
+                {
+                    "rafamadriz/friendly-snippets",
+                    event = "InsertCharPre"
+                }
             }
         }
 
@@ -158,14 +161,19 @@ return packer.startup(
             "nvim-telescope/telescope.nvim",
             requires = {
                 {"nvim-lua/popup.nvim"},
-                {"nvim-lua/plenary.nvim"},
-                {"nvim-telescope/telescope-fzf-native.nvim", run = "make"},
-                {"nvim-telescope/telescope-media-files.nvim"}
+                {"nvim-lua/plenary.nvim"}
             },
             cmd = "Telescope",
             config = function()
                 require("plugins.telescope").config()
             end
+        }
+
+        use {"nvim-telescope/telescope-fzf-native.nvim", run = "make", cmd = "Telescope"}
+
+        use {
+            "nvim-telescope/telescope-media-files.nvim",
+            cmd = "Telescope"
         }
 
         -- git stuff
