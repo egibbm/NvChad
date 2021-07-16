@@ -4,12 +4,8 @@ M.config = function()
     require("telescope").setup {
         defaults = {
             vimgrep_arguments = {
-                "rg",
-                "--color=never",
-                "--no-heading",
-                "--with-filename",
-                "--line-number",
-                "--column",
+                "ag",
+                "--vimgrep",
                 "--smart-case"
             },
             prompt_prefix = "   ",
