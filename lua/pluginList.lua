@@ -161,6 +161,7 @@ return packer.startup(
             "nvim-telescope/telescope.nvim",
             requires = {
                 {"nvim-lua/popup.nvim"},
+                {"nvim-telescope/telescope-media-files.nvim"},
                 {"nvim-lua/plenary.nvim"}
             },
             cmd = "Telescope",
@@ -171,10 +172,10 @@ return packer.startup(
 
         use {"nvim-telescope/telescope-fzf-native.nvim", run = "make", cmd = "Telescope"}
 
-        use {
-            "nvim-telescope/telescope-media-files.nvim",
-            cmd = "Telescope"
-        }
+        -- use {
+        --     "nvim-telescope/telescope-media-files.nvim",
+        --     cmd = "Telescope"
+        -- }
 
         -- git stuff
         use {
