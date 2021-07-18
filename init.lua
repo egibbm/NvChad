@@ -1,22 +1,28 @@
--- load all plugins
-require "pluginList"
+-- load all options
 require "options"
-require "plugins.bufferline"
 
-local g = vim.g
+-- load stuff only if theme is initialized
+if require "theme" then
+    local async
+    async =
+        vim.loop.new_async(
+        vim.schedule_wrap(
+            function()
+                require "pluginList"
+                require "plugins.bufferline"
+                require "highlights"
+                require "mappings"
+                require("utils").hideStuff()
+                require("rails")
 
--- g.mapleader = "\\"
-g.auto_save = false
-
--- colorscheme related stuff
-
-g.nvchad_theme = "onedark"
-local base16 = require "base16"
-base16(base16.themes["onedark"], true)
-
-require "highlights"
-require "mappings"
-
-require("utils").hideStuff()
-
-require("rails")
+                async:close()
+            end
+        )
+    )
+    async:send()
+else
+    -- otherwise run PackerSync
+    require "pluginList"
+    print("Now PackerSync will be executed, after completion, restart nvim.\n")
+    vim.cmd("PackerSync")
+end

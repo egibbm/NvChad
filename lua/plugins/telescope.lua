@@ -1,7 +1,10 @@
-local M = {}
+local present, telescope = pcall(require, "telescope")
+if not present then
+    return
+end
 
-M.config = function()
-    require("telescope").setup {
+telescope.setup(
+    {
         defaults = {
             vimgrep_arguments = {
                 "ag",
@@ -28,21 +31,21 @@ M.config = function()
                 height = 0.80,
                 preview_cutoff = 120
             },
-            file_sorter = require "telescope.sorters".get_fuzzy_file,
+            file_sorter = require("telescope.sorters").get_fuzzy_file,
             file_ignore_patterns = {},
-            generic_sorter = require "telescope.sorters".get_generic_fuzzy_sorter,
-            path_display = shorten,
+            generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
+            path_display = {"absolute"},
             winblend = 0,
             border = {},
             borderchars = {"─", "│", "─", "│", "╭", "╮", "╯", "╰"},
             color_devicons = true,
             use_less = true,
             set_env = {["COLORTERM"] = "truecolor"}, -- default = nil,
-            file_previewer = require "telescope.previewers".vim_buffer_cat.new,
-            grep_previewer = require "telescope.previewers".vim_buffer_vimgrep.new,
-            qflist_previewer = require "telescope.previewers".vim_buffer_qflist.new,
+            file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+            grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+            qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
             -- Developer configurations: Not meant for general override
-            buffer_previewer_maker = require "telescope.previewers".buffer_previewer_maker
+            buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker
         },
         extensions = {
             fzf = {
@@ -58,9 +61,16 @@ M.config = function()
             }
         }
     }
+)
 
-    require("telescope").load_extension("fzf")
-    require("telescope").load_extension("media_files")
+if
+    not pcall(
+        function()
+            telescope.load_extension("fzf")
+            telescope.load_extension("media_files")
+        end
+    )
+ then
+    -- This should only trigger when in need of PackerSync, so better do it
+    vim.cmd("PackerSync")
 end
-
-return M

@@ -1,4 +1,5 @@
 local opt = vim.opt
+local g = vim.g
 
 opt.ruler = false
 opt.hidden = true
@@ -17,27 +18,40 @@ opt.updatetime = 250 -- update interval for gitsigns
 opt.timeoutlen = 400
 opt.clipboard = "unnamedplus"
 
+-- disable nvim intro
+opt.shortmess:append("sI")
+
+-- disable tilde on end of buffer: https://github.com/  neovim/neovim/pull/8546#issuecomment-643643758
+vim.cmd [[let &fcs='eob: ']]
+
 -- Numbers
 opt.number = true
 opt.numberwidth = 2
 -- opt.relativenumber = true
 
--- for indenline
+-- Indenline
 opt.expandtab = true
 opt.shiftwidth = 2
 opt.smartindent = true
 
+-- go to previous/next line with h,l,left arrow and right arrow
+-- when cursor reaches end/beginning of line
+opt.whichwrap:append("<>hl")
+
+g.mapleader = "\\"
+g.auto_save = false
+
 -- disable builtin vim plugins
-vim.g.loaded_gzip = 0
-vim.g.loaded_tar = 0
-vim.g.loaded_tarPlugin = 0
-vim.g.loaded_zipPlugin = 0
-vim.g.loaded_2html_plugin = 0
-vim.g.loaded_netrw = 0
-vim.g.loaded_netrwPlugin = 0
-vim.g.loaded_matchit = 0
-vim.g.loaded_matchparen = 0
-vim.g.loaded_spec = 0
+g.loaded_gzip = 0
+g.loaded_tar = 0
+g.loaded_tarPlugin = 0
+g.loaded_zipPlugin = 0
+g.loaded_2html_plugin = 0
+g.loaded_netrw = 0
+g.loaded_netrwPlugin = 0
+g.loaded_matchit = 0
+g.loaded_matchparen = 0
+g.loaded_spec = 0
 
 local M = {}
 

@@ -18,6 +18,14 @@ map("v", "x", [=[ "_x ]=], opt)
  this line too ]]
 --
 
+-- escape with 'jk' mapping
+vim.api.nvim_set_keymap("i", "jk", "<esc>", {})
+vim.api.nvim_set_keymap("v", "jk", "<esc>", {})
+vim.api.nvim_set_keymap("t", "jk", "<esc>", {})
+
+-- Don't copy the replaced text after pasting in visual mode
+map("v", "p", '"_dP', opt)
+
 -- OPEN TERMINALS --
 --map("n", "<C-l>", [[<Cmd>vnew term://bash <CR>]], opt) -- term over right
 --map("n", "<C-x>", [[<Cmd> split term://bash | resize 10 <CR>]], opt) --  term bottom
@@ -35,7 +43,6 @@ map("n", "<leader>zm", ":TZMinimalist<CR>", opt)
 map("n", "<leader>zf", ":TZFocus<CR>", opt)
 
 -- map("n", "<C-s>", ":w <CR>", opt)
--- vim.cmd("inoremap jh <Esc>")
 
 -- easy wrap toggling
 map("n", "<Leader>w", ":set wrap!<cr>", opt)
@@ -167,7 +174,17 @@ _G.s_tab_complete = function()
 end
 
 function _G.completions()
-    local npairs = require("nvim-autopairs")
+    local npairs
+    if
+        not pcall(
+            function()
+                npairs = require "nvim-autopairs"
+            end
+        )
+     then
+        return
+    end
+
     if vim.fn.pumvisible() == 1 then
         if vim.fn.complete_info()["selected"] ~= -1 then
             return vim.fn["compe#confirm"]("<CR>")
@@ -222,3 +239,9 @@ map("n", "<S-x>", ":bd!<CR>", opt) -- close tab
 -- move between tabs
 map("n", "<TAB>", [[<Cmd>BufferLineCycleNext<CR>]], opt)
 map("n", "<S-TAB>", [[<Cmd>BufferLineCyclePrev<CR>]], opt)
+
+-- use ESC to turn off search highlighting
+map("n", "<Esc>", ":noh<CR>", opts)
+
+-- get out of terminal with ESC
+map("t", "<Esc>", "<C-\\><C-n>", opts)
