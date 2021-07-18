@@ -12,10 +12,11 @@ return packer.startup(
     function()
         use "wbthomason/packer.nvim"
 
-        use "akinsho/nvim-bufferline.lua"
+        use {"akinsho/nvim-bufferline.lua", event = "VimEnter"}
 
         use {
             "glepnir/galaxyline.nvim",
+            event = "VimEnter",
             config = function()
                 require "plugins.statusline"
             end
@@ -98,6 +99,7 @@ return packer.startup(
 
         use {
             "kyazdani42/nvim-web-devicons",
+            event = "VimEnter",
             config = function()
                 require "plugins.icons"
             end
@@ -152,6 +154,8 @@ return packer.startup(
         use "tpope/vim-repeat"
         -- use "easymotion/vim-easymotion"
 
+        use {"nvim-lua/plenary.nvim", event = "BufRead"}
+        use {"nvim-lua/popup.nvim", after = "plenary.nvim"}
         use {
             "nvim-telescope/telescope.nvim",
             requires = {
@@ -175,7 +179,7 @@ return packer.startup(
         -- git stuff
         use {
             "lewis6991/gitsigns.nvim",
-            event = "BufRead",
+            after = "plenary.nvim",
             config = function()
                 require "plugins.gitsigns"
             end
