@@ -27,9 +27,9 @@ map("v", "x", [=[ "_x ]=], opt)
 map("v", "p", '"_dP', opt)
 
 -- OPEN TERMINALS --
---map("n", "<C-l>", [[<Cmd>vnew term://bash <CR>]], opt) -- term over right
---map("n", "<C-x>", [[<Cmd> split term://bash | resize 10 <CR>]], opt) --  term bottom
---map("n", "<C-t>t", [[<Cmd> tabnew | term <CR>]], opt) -- term newtab
+-- map("n", "<C-l>", [[<Cmd> vnew +terminal | setlocal nobuflisted <CR>]], opt) -- term over right
+-- map("n", "<C-x>", [[<Cmd> 10new +terminal | setlocal nobuflisted <CR>]], opt) --  term bottom
+-- map("n", "<C-t>t", [[<Cmd> terminal <CR>]], opt) -- term buffer
 
 -- copy whole file content
 -- map("n", "<C-a>", [[ <Cmd> %y+<CR>]], opt)
@@ -233,7 +233,8 @@ map("n", "<Leader>fh", [[<Cmd>Telescope help_tags<CR>]], opt)
 map("n", "<Leader>fo", [[<Cmd>Telescope oldfiles<CR>]], opt)
 
 -- bufferline tab stuff
-map("n", "<S-t>", ":tabnew<CR>", opt) -- new tab
+map("n", "<S-t>", ":enew<CR>", opt) -- new buffer
+map("n", "<C-t>b", ":tabnew<CR>", opt) -- new tab
 map("n", "<S-x>", ":bd!<CR>", opt) -- close tab
 
 -- move between tabs
