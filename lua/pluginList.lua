@@ -121,7 +121,7 @@ return packer.startup(
             end
         }
 
-        use "slim-template/vim-slim"
+        use {"slim-template/vim-slim", ft='slim'}
         use {'tpope/vim-dispatch', opt = true, cmd = {'Dispatch', 'Make', 'Focus', 'Start'}}
         use {
           "vim-ruby/vim-ruby", 
@@ -153,9 +153,9 @@ return packer.startup(
         use {"mMontu/vim-RobotUtils", ft = 'robot'}
 
         -- use "mattn/emmet-vim"
-        -- use "ap/vim-css-color"
+        -- use "ap/vim-css-color"           <-- supported by treesitter(?)
         -- use "digitaltoad/vim-pug"
-        -- use "leafgarland/typescript-vim"
+        -- use "leafgarland/typescript-vim" <-- supported by treesitter
         -- use "groenewege/vim-less"
         -- use "mustache/vim-mustache-handlebars"
         -- use "kchmck/vim-coffee-script"
