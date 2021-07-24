@@ -1,13 +1,6 @@
 local opt = vim.opt
 local g = vim.g
 
--- Turn these off at startup, will be enabled later just before loading the theme
-vim.cmd([[
-    syntax off
-    filetype off
-    filetype plugin indent off
-]])
-
 opt.ruler = false
 opt.hidden = true
 opt.ignorecase = true
@@ -74,16 +67,13 @@ for _, plugin in pairs(disabled_built_ins) do
     vim.g["loaded_" .. plugin] = 1
 end
 
-local M = {}
-
 -- file extension specific tabbing
-vim.cmd([[
-  autocmd Filetype python     setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
-  autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
-  autocmd FileType less       setlocal tabstop=2 shiftwidth=2 softtabstop=2
-  autocmd FileType scss       setlocal tabstop=2 shiftwidth=2 softtabstop=2
-  autocmd FileType xbt.php    setlocal tabstop=2 shiftwidth=2 softtabstop=2
-  autocmd Filetype gitcommit  setlocal spell textwidth=72
-]])
+-- vim.cmd([[
+--   autocmd Filetype python     setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+--   autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
+--   autocmd FileType less       setlocal tabstop=2 shiftwidth=2 softtabstop=2
+--   autocmd FileType scss       setlocal tabstop=2 shiftwidth=2 softtabstop=2
+--   autocmd FileType xbt.php    setlocal tabstop=2 shiftwidth=2 softtabstop=2
+--   autocmd Filetype gitcommit  setlocal spell textwidth=72
+-- ]])
 
-return M
