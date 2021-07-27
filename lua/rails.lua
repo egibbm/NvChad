@@ -34,3 +34,9 @@ map("n", "<Leader>rc", ":wa<CR> :call RunCurrentSpecFile()<CR>", opt)
 map("n", "<Leader>rn", ":wa<CR> :call RunNearestSpec()<CR>", opt)
 map("n", "<Leader>rl", ":wa<CR> :call RunLastSpec()<CR>", opt)
 map("n", "<Leader>ra", ":wa<CR> :call RunAllSpecs()<CR>", opt)
+
+-- shortcuts for frequenly used files
+map("n", "gs", ":e db/schema.rb<cr>", opt)
+map("n", "gr", ":e config/routes.rb<cr>", opt)
+map("n", "gm", ":e Gemfile<cr>", opt)
+

@@ -57,11 +57,6 @@ map("n", "gW", ":only<cr>", opt)
 -- delete all buffers
 map("", "<Leader>d", ":bufdo bd<cr>", opt)
 
--- shortcuts for frequenly used files
-map("n", "gs", ":e db/schema.rb<cr>", opt)
-map("n", "gr", ":e config/routes.rb<cr>", opt)
-map("n", "gm", ":e Gemfile<cr>", opt)
-
 -- Commenter Keybinding
 map("n", "<C-_>", ":CommentToggle<CR>", opt)
 map("v", "<C-_>", ":CommentToggle<CR>", opt)
@@ -87,9 +82,6 @@ map("", "<Leader>c", ":StripTrailingWhitespaces<cr>", opt)
 
 -- compress excess whitespace on current line
 map("", "<Leader>e", ":s/\\v(\\S+)\\s+/\\1 /<cr>:nohl<cr>", opt)
-
--- map spacebar to clear search highlight
-map("n", "<Leader><space>", ":noh<cr>", opt)
 
 -- buffer resizing mappings (shift + arrow key)
 map("n", "<S-Up>", "<c-w>+", opt)
@@ -228,6 +220,7 @@ map("n", "<Leader>fw", ":Telescope live_grep<CR>", opt)
 map("n", "<Leader>gt", ":Telescope git_status <CR>", opt)
 map("n", "<Leader>cm", ":Telescope git_commits <CR>", opt)
 map("n", "<Leader>ff", ":Telescope find_files <CR>", opt)
+map("n", "<C-p>",      ":Telescope find_files <CR>", opt)
 map("n", "<Leader>fp", ":Telescope media_files <CR>", opt)
 map("n", "<Leader>fb", ":Telescope buffers<CR>", opt)
 map("n", "<Leader>fh", ":Telescope help_tags<CR>", opt)
@@ -243,7 +236,8 @@ map("n", "<TAB>", ":BufferLineCycleNext<CR>", opt)
 map("n", "<S-TAB>", ":BufferLineCyclePrev<CR>", opt)
 
 -- use ESC to turn off search highlighting
-map("n", "<Esc>", ":noh<CR>", opt)
+-- map("n", "<Esc>", ":noh<CR>", opt)
+map("n", "<Leader><space>", ":noh<cr>", opt)
 
 -- get out of terminal with jk
 -- map("t", "jk", "<C-\\><C-n>", opt)
