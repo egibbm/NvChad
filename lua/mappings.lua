@@ -105,8 +105,8 @@ map("", "<C-o>", "<C-o>zz", opt)
 map("", "<C-i>", "<C-i>zz", opt)
 
 -- PHP
-map("i", "<C-l>", "->", opt)
-map("i", "<C-k>", "=>", opt)
+-- map("i", "<C-l>", "->", opt)
+-- map("i", "<C-k>", "=>", opt)
 
 -- CTRL-X and SHIFT-Del are Cut
 map("v", "<C-X>", '"+x', opt)
