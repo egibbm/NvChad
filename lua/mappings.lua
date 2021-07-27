@@ -18,13 +18,16 @@ map("v", "x", [=[ "_x ]=], opt)
  this line too ]]
 --
 
--- escape with 'jk' mapping
--- vim.api.nvim_set_keymap("i", "jk", "<esc>", {})
--- vim.api.nvim_set_keymap("v", "jk", "<esc>", {})
--- vim.api.nvim_set_keymap("t", "jk", "<esc>", {})
-
 -- Don't copy the replaced text after pasting in visual mode
 map("v", "p", '"_dP', opt)
+
+-- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
+-- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
+-- empty mode is same as using :map
+map("", "j", 'v:count ? "j" : "gj"', {expr = true})
+map("", "k", 'v:count ? "k" : "gk"', {expr = true})
+map("", "<Down>", 'v:count ? "j" : "gj"', {expr = true})
+map("", "<Up>", 'v:count ? "k" : "gk"', {expr = true})
 
 -- OPEN TERMINALS --
 -- map("n", "<C-l>", ":vnew +terminal | setlocal nobuflisted <CR>", opt) -- term over right
@@ -243,7 +246,7 @@ map("n", "<S-TAB>", ":BufferLineCyclePrev<CR>", opt)
 map("n", "<Esc>", ":noh<CR>", opt)
 
 -- get out of terminal with jk
-map("t", "jk", "<C-\\><C-n>", opt)
+-- map("t", "jk", "<C-\\><C-n>", opt)
 
 -- Packer commands till because we are not loading it at startup
 vim.cmd("silent! command PackerCompile lua require 'pluginList' require('packer').compile()")
