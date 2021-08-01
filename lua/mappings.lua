@@ -196,7 +196,7 @@ map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 map("i", "<CR>", "v:lua.completions()", {expr = true})
 
 -- Mappings for nvimtree
-map("n", "<leader>g", ":NvimTreeToggle<CR>",   opt)
+-- map("n", "<leader>g", ":NvimTreeToggle<CR>",   opt)
 map("n", "<leader>G", ":NvimTreeFindFile<CR>", opt)
 
 -- require 'janko-m/vim-test'
@@ -215,10 +215,9 @@ map("n", "<C-s>l", ":SessionLoad<CR>", opt)
 map("n", "<C-s>s", ":SessionSave<CR>", opt)
 
 -- Telescope
-map("n", "<Leader>gt", ":Telescope git_status <CR>", opt)
 map("n", "<Leader>fw", ":Telescope live_grep<CR>", opt)
-map("n", "<Leader>gt", ":Telescope git_status <CR>", opt)
-map("n", "<Leader>cm", ":Telescope git_commits <CR>", opt)
+-- map("n", "<Leader>gt", ":Telescope git_status <CR>", opt)
+map("n", "<Leader>gc", ":Telescope git_commits <CR>", opt)
 map("n", "<Leader>ff", ":Telescope find_files <CR>", opt)
 map("n", "<C-p>",      ":Telescope find_files <CR>", opt)
 map("n", "<Leader>fp", ":Telescope media_files <CR>", opt)
@@ -237,7 +236,7 @@ map("n", "<S-TAB>", ":BufferLineCyclePrev<CR>", opt)
 
 -- use ESC to turn off search highlighting
 -- map("n", "<Esc>", ":noh<CR>", opt)
-map("n", "<Leader><space>", ":noh<cr>", opt)
+-- map("n", "<Leader><space>", ":noh<cr>", opt)
 
 -- get out of terminal with jk
 -- map("t", "jk", "<C-\\><C-n>", opt)
@@ -250,7 +249,7 @@ vim.cmd("silent! command PackerSync lua require 'pluginList' require('packer').s
 vim.cmd("silent! command PackerUpdate lua require 'pluginList' require('packer').update()")
 
 -- Vim Fugitive
-map("n", "<Leader>gs", ":Git<CR>", opt)
+map("n", "<Leader>gs", ":tab Git<CR>", opt)
 map("n", "<Leader>gh", ":diffget //2<CR>", opt)
 map("n", "<Leader>gl", ":diffget //3<CR>", opt)
 map("n", "<Leader>gb", ":Git blame<CR>", opt)
