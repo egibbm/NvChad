@@ -68,7 +68,7 @@ return packer.startup(
 
         use {
             "kabouzeid/nvim-lspinstall",
-            event = "BufRead"
+            event = "BufEnter"
         }
 
         use {
@@ -81,7 +81,7 @@ return packer.startup(
 
         use {
             "onsails/lspkind-nvim",
-            event = "BufRead",
+            event = "BufEnter",
             config = function()
                 require("plugins.others").lspkind()
             end
@@ -269,7 +269,6 @@ return packer.startup(
           end
         }
 
-        use "tpope/vim-fugitive"
         use "junegunn/gv.vim"
         use {
           "rcarriga/vim-ultest", 
@@ -277,11 +276,6 @@ return packer.startup(
           requires = {
             "vim-test/vim-test"
           }
-        }
-
-        use {
-            "dstein64/vim-startuptime",
-            cmd = "StartupTime"
         }
 
         -- load autosave only if its globally enabled
@@ -329,6 +323,7 @@ return packer.startup(
             end
         }
 
+        use "tpope/vim-fugitive"
         -- use {
         --     "tpope/vim-fugitive",
         --     cmd = {
