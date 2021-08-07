@@ -6,7 +6,7 @@ ORANGE='\033[0;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-REPO="https://github.com/siduck76/NvChad.git"
+REPO="git@github.com:egibbm/NvChad.git --branch vidio"
 BACKUP_PATH="/tmp/nvchad/"
 TMP_NVCHAD="/tmp/nvchad_updates/"
 
