@@ -22,7 +22,7 @@ local M = {
     },
     -- enable / disable plugins (true for disable)
     plugin_status = {
-        better_esc = false,
+        better_esc = true,
         nvim_bufferline = false,
         galaxyline = false,
         nvim_colorizer = false,
@@ -37,7 +37,7 @@ local M = {
         blankline = false,
         vim_fugitive = false,
         nvim_comment = false,
-        neoscroll_nvim = false
+        neoscroll_nvim = true
     },
     -- make sure you dont use same keys twice
     mappings = {

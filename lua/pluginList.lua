@@ -18,14 +18,14 @@ return packer.startup(
             event = "VimEnter"
         }
 
-        -- use {
-        --     "jdhao/better-escape.vim",
-        --     disable = plugin_status.better_esc,
-        --     event = "InsertEnter",
-        --     config = function()
-        --         require "plugins.others".escape()
-        --     end
-        -- }
+        use {
+            "jdhao/better-escape.vim",
+            disable = plugin_status.better_esc,
+            event = "InsertEnter",
+            config = function()
+                require "plugins.others".escape()
+            end
+        }
 
         use {
             "akinsho/nvim-bufferline.lua",
@@ -327,14 +327,14 @@ return packer.startup(
         }
 
         -- smooth scroll
-        -- use {
-        --     "karb94/neoscroll.nvim",
-        --     disable = plugin_status.neoscroll_nvim,
-        --     event = "WinScrolled",
-        --     config = function()
-        --         require("plugins.others").neoscroll()
-        --     end
-        -- }
+        use {
+            "karb94/neoscroll.nvim",
+            disable = plugin_status.neoscroll_nvim,
+            event = "WinScrolled",
+            config = function()
+                require("plugins.others").neoscroll()
+            end
+        }
 
         use {
             "Pocco81/TrueZen.nvim",
@@ -366,13 +366,12 @@ return packer.startup(
             end
         }
 
-        -- use "tpope/vim-fugitive"
         use {
             "tpope/vim-fugitive",
             disable = plugin_status.vim_fugitive,
-            cmd = {
-                "Git"
-            },
+            -- cmd = {
+            --     "Git"
+            -- },
             setup = function()
                 require "mappings".fugitive()
             end
