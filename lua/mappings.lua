@@ -181,17 +181,18 @@ M.telescope = function()
     map("n", m.themes, ":Telescope themes<CR>", opt)
 end
 
---  compe mappings
-map("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-map("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-map("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-map("i", "<CR>", "v:lua.completions()", {expr = true})
+M.compe = function()
+    map("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+    map("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+    map("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+    map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+    map("i", "<CR>", "v:lua.completions()", {expr = true})
+end
 
--- require 'janko-m/vim-test'
-
-map("n", "<leader>T", ":TestFile<CR>",    { silent = true })
-map("n", "<leader>F", ":TestNearest<CR>", { silent = true })
+M.vim_test = function()
+    map("n", "<leader>T", ":TestFile<CR>",    { silent = true })
+    map("n", "<leader>F", ":TestNearest<CR>", { silent = true })
+end
 
 M.bufferline = function()
     local m = user_map.bufferline

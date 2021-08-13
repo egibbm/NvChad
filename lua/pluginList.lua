@@ -113,6 +113,9 @@ return packer.startup(
             config = function()
                 require "plugins.compe"
             end,
+            setup = function()
+              require "mappings".compe()
+            end,
             wants = "LuaSnip",
             requires = {
                 {
@@ -310,7 +313,12 @@ return packer.startup(
           "rcarriga/vim-ultest", 
           run = ":UpdateRemotePlugins",
           requires = {
-            "vim-test/vim-test"
+            {
+              "vim-test/vim-test",
+              setup = function()
+                require "mappings".vim_test()
+              end
+            }
           }
         }
 
