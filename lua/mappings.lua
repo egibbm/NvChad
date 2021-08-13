@@ -1,3 +1,9 @@
+local user_map = require("chadrc").mappings
+local miscMap = user_map.misc
+
+local M = {}
+local cmd = vim.cmd
+
 local function map(mode, lhs, rhs, opts)
     local options = {noremap = true, silent = true}
     if opts then
@@ -30,20 +36,23 @@ map("", "<Down>", 'v:count ? "j" : "gj"', {expr = true})
 map("", "<Up>", 'v:count ? "k" : "gk"', {expr = true})
 
 -- OPEN TERMINALS --
--- map("n", "<C-l>", ":vnew +terminal | setlocal nobuflisted <CR>", opt) -- term over right
--- map("n", "<C-x>", ":10new +terminal | setlocal nobuflisted <CR>", opt) --  term bottom
--- map("n", "<C-t>t", ":terminal <CR>", opt) -- term buffer
+-- map("n", miscMap.openTerm_right, ":vnew +terminal | setlocal nobuflisted <CR>", opt) -- term over right
+-- map("n", miscMap.openTerm_bottom, ":10new +terminal | setlocal nobuflisted <CR>", opt) --  term bottom
+-- map("n", miscMap.openTerm_currentBuf, ":terminal <CR>", opt) -- term buffer
 
 -- copy whole file content
--- map("n", "<C-a>", ":%y+<CR>", opt)
+-- map("n", miscMap.copywhole_file, ":%y+<CR>", opt)
 
 -- toggle numbers
--- map("n", "<leader>n", ":set nu!<CR>", opt)
+-- map("n", miscMap.toggle_linenr, ":set nu!<CR>", opt)
 
--- Truezen.nvim
-map("n", "<leader>zz", ":TZAtaraxis<CR>", opt)
-map("n", "<leader>zm", ":TZMinimalist<CR>", opt)
-map("n", "<leader>zf", ":TZFocus<CR>", opt)
+M.truezen = function()
+    local m = user_map.truezen
+
+    map("n", m.ataraxisMode, ":TZAtaraxis<CR>", opt)
+    map("n", m.minimalisticmode, ":TZMinimalist<CR>", opt)
+    map("n", m.focusmode, ":TZFocus<CR>", opt)
+end
 
 -- map("n", "<C-s>", ":w <CR>", opt)
 
@@ -56,10 +65,6 @@ map("n", "gW", ":only<cr>", opt)
 
 -- delete all buffers
 map("", "<Leader>d", ":bufdo bd<cr>", opt)
-
--- Commenter Keybinding
-map("n", "<C-_>", ":CommentToggle<CR>", opt)
-map("v", "<C-_>", ":CommentToggle<CR>", opt)
 
 -- insert blank lines without going into insert mode
 map("n", "go", "o<esc>", opt)
@@ -134,58 +139,46 @@ map("", "<Leader>8", "8gt", opt)
 map("", "<Leader>9", "9gt", opt)
 map("", "<Leader>0", ":tablast<cr>", opt)
 
--- compe stuff
-local t = function(str)
-    return vim.api.nvim_replace_termcodes(str, true, true, true)
+M.comment_nvim = function()
+    local m = user_map.comment_nvim.comment_toggle
+    map("n", m, ":CommentToggle<CR>", opt)
+    map("v", m, ":CommentToggle<CR>", opt)
 end
 
-local check_back_space = function()
-    local col = vim.fn.col(".") - 1
-    if col == 0 or vim.fn.getline("."):sub(col, col):match("%s") then
-        return true
-    else
-        return false
-    end
+M.nvimtree = function()
+    local m = user_map.nvimtree
+
+    map("n", m.treetoggle, ":NvimTreeToggle<CR>", opt)
+    map("n", m.findfile, ":NvimTreeFindFile<CR>", opt)
 end
 
-_G.tab_complete = function()
-    if vim.fn.pumvisible() == 1 then
-        return t "<C-n>"
-    elseif check_back_space() then
-        return t "<Tab>"
-    else
-        return vim.fn["compe#complete"]()
-    end
+M.neoformat = function()
+    local m = user_map.neoformat.format
+    map("n", m, ":Neoformat<CR>", opt)
 end
 
-_G.s_tab_complete = function()
-    if vim.fn.pumvisible() == 1 then
-        return t "<C-p>"
-    elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
-        return t "<Plug>(vsnip-jump-prev)"
-    else
-        return t "<S-Tab>"
-    end
+M.dashboard = function()
+    local m = user_map.dashboard
+
+    map("n", m.open, ":Dashboard<CR>", opt)
+    map("n", m.newfile, ":DashboardNewFile<CR>", opt)
+    map("n", m.bookmarks, ":DashboardJumpMarks<CR>", opt)
+    map("n", m.sessionload, ":SessionLoad<CR>", opt)
+    map("n", m.sessionsave, ":SessionSave<CR>", opt)
 end
 
-function _G.completions()
-    local npairs
-    if
-        not pcall(
-            function()
-                npairs = require "nvim-autopairs"
-            end
-        )
-     then
-        return
-    end
+M.telescope = function()
+    local m = user_map.telescope
 
-    if vim.fn.pumvisible() == 1 then
-        if vim.fn.complete_info()["selected"] ~= -1 then
-            return vim.fn["compe#confirm"]("<CR>")
-        end
-    end
-    return npairs.check_break_line_char()
+    map("n", m.live_grep, ":Telescope live_grep<CR>", opt)
+    -- map("n", m.git_status, ":Telescope git_status <CR>", opt)
+    map("n", m.git_commits, ":Telescope git_commits <CR>", opt)
+    map("n", m.find_files, ":Telescope find_files <CR>", opt)
+    map("n", m.media_files, ":Telescope media_files <CR>", opt)
+    map("n", m.buffers, ":Telescope buffers<CR>", opt)
+    map("n", m.help_tags, ":Telescope help_tags<CR>", opt)
+    map("n", m.oldfiles, ":Telescope oldfiles<CR>", opt)
+    map("n", m.themes, ":Telescope themes<CR>", opt)
 end
 
 --  compe mappings
@@ -195,62 +188,45 @@ map("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 map("i", "<CR>", "v:lua.completions()", {expr = true})
 
--- Mappings for nvimtree
--- map("n", "<leader>g", ":NvimTreeToggle<CR>",   opt)
-map("n", "<leader>G", ":NvimTreeFindFile<CR>", opt)
-
 -- require 'janko-m/vim-test'
 
 map("n", "<leader>T", ":TestFile<CR>",    { silent = true })
 map("n", "<leader>F", ":TestNearest<CR>", { silent = true })
 
--- format code
-map("n", "<Leader>fm", ":Neoformat<CR>", opt)
+M.bufferline = function()
+    local m = user_map.bufferline
 
--- dashboard stuff
-map("n", "<Leader>db", ":Dashboard<CR>", opt)
-map("n", "<Leader>fn", ":DashboardNewFile<CR>", opt)
-map("n", "<Leader>bm", ":DashboardJumpMarks<CR>", opt)
-map("n", "<C-s>l", ":SessionLoad<CR>", opt)
-map("n", "<C-s>s", ":SessionSave<CR>", opt)
+    map("n", m.new_buffer, ":enew<CR>", opt) -- new buffer
+    map("n", m.newtab, ":tabnew<CR>", opt) -- new tab
+    map("n", m.close, ":bd!<CR>", opt) -- close  buffer
 
--- Telescope
-map("n", "<Leader>fw", ":Telescope live_grep<CR>", opt)
--- map("n", "<Leader>gt", ":Telescope git_status <CR>", opt)
-map("n", "<Leader>gc", ":Telescope git_commits <CR>", opt)
-map("n", "<Leader>ff", ":Telescope find_files <CR>", opt)
-map("n", "<C-p>",      ":Telescope find_files <CR>", opt)
-map("n", "<Leader>fp", ":Telescope media_files <CR>", opt)
-map("n", "<Leader>fb", ":Telescope buffers<CR>", opt)
-map("n", "<Leader>fh", ":Telescope help_tags<CR>", opt)
-map("n", "<Leader>fo", ":Telescope oldfiles<CR>", opt)
-map("n", "<Leader>th", ":Telescope themes<CR>", opt)
+    -- move between tabs
 
--- bufferline tab stuff
-map("n", "<S-t>", ":enew<CR>", opt) -- new buffer
-map("n", "<C-t>b", ":tabnew<CR>", opt) -- new tab
-map("n", "<S-x>", ":bd!<CR>", opt) -- close tab
-
--- move between tabs
-map("n", "<TAB>", ":BufferLineCycleNext<CR>", opt)
-map("n", "<S-TAB>", ":BufferLineCyclePrev<CR>", opt)
+    map("n", m.cycleNext, ":BufferLineCycleNext<CR>", opt)
+    map("n", m.cyclePrev, ":BufferLineCyclePrev<CR>", opt)
+end
 
 -- use ESC to turn off search highlighting
 -- map("n", "<Esc>", ":noh<CR>", opt)
 -- map("n", "<Leader><space>", ":noh<cr>", opt)
 
 -- get out of terminal with jk
--- map("t", "jk", "<C-\\><C-n>", opt)
+-- map("t", miscMap.esc_Termmode, "<C-\\><C-n>", opt)
 
 -- Packer commands till because we are not loading it at startup
-vim.cmd("silent! command PackerCompile lua require 'pluginList' require('packer').compile()")
-vim.cmd("silent! command PackerInstall lua require 'pluginList' require('packer').install()")
-vim.cmd("silent! command PackerStatus lua require 'pluginList' require('packer').status()")
-vim.cmd("silent! command PackerSync lua require 'pluginList' require('packer').sync()")
-vim.cmd("silent! command PackerUpdate lua require 'pluginList' require('packer').update()")
+cmd("silent! command PackerCompile lua require 'pluginList' require('packer').compile()")
+cmd("silent! command PackerInstall lua require 'pluginList' require('packer').install()")
+cmd("silent! command PackerStatus lua require 'pluginList' require('packer').status()")
+cmd("silent! command PackerSync lua require 'pluginList' require('packer').sync()")
+cmd("silent! command PackerUpdate lua require 'pluginList' require('packer').update()")
 
--- Vim Fugitive
-map("n", "<Leader>gs", ":tab Git<CR>", opt)
-map("n", "<Leader>gh", ":diffget //2<CR>", opt)
-map("n", "<Leader>gl", ":diffget //3<CR>", opt)
-map("n", "<Leader>gb", ":Git blame<CR>", opt)
+M.fugitive = function()
+    local m = user_map.fugitive
+
+    map("n", m.Git, ":tab Git<CR>", opt)
+    map("n", m.diffget_2, ":diffget //2<CR>", opt)
+    map("n", m.diffget_3, ":diffget //3<CR>", opt)
+    map("n", m.git_blame, ":Git blame<CR>", opt)
+end
+
+return M
