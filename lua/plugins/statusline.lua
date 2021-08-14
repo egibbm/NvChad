@@ -44,7 +44,10 @@ gls.left[3] = {
 
 gls.left[4] = {
     FileName = {
-        provider = {"FileName"},
+        provider = function()
+            local fileinfo = require('galaxyline.provider_fileinfo')
+            return fileinfo.get_current_file_name("", "")
+        end,
         condition = condition.buffer_not_empty,
         highlight = {colors.white, colors.lightbg},
         separator = right_separator,
@@ -156,25 +159,21 @@ gls.right[3] = {
     }
 }
 
-local active_mode = {
-    n = {"Normal", colors.red},
-    i = {"Insert", colors.dark_purple},
-    c = {"Command", colors.pink},
-    V = {"Visual", colors.cyan},
-    [""] = {"Visual", colors.cyan},
-    v = {"Visual", colors.cyan},
-    R = {"Replace", colors.orange},
-    t = {"Terminal", colors.green}
+local mode_colors = {
+    [110] = {"NORMAL", colors.red},
+    [105] = {"INSERT", colors.dark_purple},
+    [99] = {"COMMAND", colors.pink},
+    [116] = {"TERMINAL", colors.green},
+    [118] = {"VISUAL", colors.cyan},
+    [22] = {"V-BLOCK", colors.cyan},
+    [86] = {"V_LINE", colors.cyan},
+    [82] = {"REPLACE", colors.orange},
+    [115] = {"SELECT", colors.nord_blue},
+    [83] = {"S-LINE", colors.nord_blue}
 }
 
-local function mode(m)
-    local chad_mode = active_mode[vim.fn.mode()][m]
-
-    if chad_mode == "nil" then
-        return active_mode[vim.fn.mode()]["t"]
-    else
-        return chad_mode
-    end
+local mode = function(n)
+    return mode_colors[vim.fn.mode():byte()][n]
 end
 
 gls.right[4] = {
@@ -205,7 +204,7 @@ gls.right[6] = {
             vim.cmd("hi GalaxyViMode guifg=" .. mode(2))
             return "  " .. mode(1) .. " "
         end,
-        highlight = {"GalaxyViMode", colors.lightbg} -- colors.red here will be overriden many times
+        highlight = {"GalaxyViMode", colors.lightbg}
     }
 }
 
