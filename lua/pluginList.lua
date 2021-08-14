@@ -236,7 +236,11 @@ return packer.startup(
                     run = "make"
                 },
                 {
-                    "nvim-telescope/telescope-media-files.nvim"
+                    "nvim-telescope/telescope-media-files.nvim",
+                    disable = plugin_status.telescope_media,
+                    setup = function()
+                        require "mappings".telescope_media()
+                    end
                 }
             },
             config = function()
@@ -258,6 +262,17 @@ return packer.startup(
         }
 
         -- misc plugins
+        use {
+            "akinsho/nvim-toggleterm.lua",
+            disable = plugin_status.toggleterm,
+            event = "BufWinEnter",
+            config = function()
+                require "plugins.toggleterm"
+            end,
+            setup = function()
+                require "mappings".toggleterm()
+            end
+        }
         use {
             "windwp/nvim-autopairs",
             after = "nvim-compe",

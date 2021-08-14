@@ -35,16 +35,29 @@ map("", "k", 'v:count ? "k" : "gk"', {expr = true})
 map("", "<Down>", 'v:count ? "j" : "gj"', {expr = true})
 map("", "<Up>", 'v:count ? "k" : "gk"', {expr = true})
 
--- OPEN TERMINALS --
--- map("n", miscMap.openTerm_right, ":vnew +terminal | setlocal nobuflisted <CR>", opt) -- term over right
--- map("n", miscMap.openTerm_bottom, ":10new +terminal | setlocal nobuflisted <CR>", opt) --  term bottom
--- map("n", miscMap.openTerm_currentBuf, ":terminal <CR>", opt) -- term buffer
-
 -- copy whole file content
 -- map("n", miscMap.copywhole_file, ":%y+<CR>", opt)
 
 -- toggle numbers
 -- map("n", miscMap.toggle_linenr, ":set nu!<CR>", opt)
+
+-- open a new buffer as a Terminal
+-- get out of terminal with jk
+-- map("t", miscMap.esc_Termmode, "<C-\\><C-n>", opt)
+
+M.toggleterm = function()
+    local m = user_map.toggleterm
+
+    -- Open terminals
+    map("n", m.toggle_window, ":execute v:count . 'ToggleTerm direction=window' <CR>", opt)
+    map("n", m.toggle_right, ":execute v:count . 'ToggleTerm direction=vertical' <CR>", opt)
+    map("n", m.toggle_bot, ":execute v:count . 'ToggleTerm direction=horizontal' <CR>", opt)
+
+    -- 'Un' toggle a term from within terminal edit mode
+    map("t", m.toggle_window, "<C-\\><C-n> :ToggleTerm <CR>", opt)
+    map("t", m.toggle_right, "<C-\\><C-n> :ToggleTerm <CR>", opt)
+    map("t", m.toggle_bot, "<C-\\><C-n> :ToggleTerm <CR>", opt)
+end
 
 M.truezen = function()
     local m = user_map.truezen
@@ -174,7 +187,6 @@ M.telescope = function()
     -- map("n", m.git_status, ":Telescope git_status <CR>", opt)
     map("n", m.git_commits, ":Telescope git_commits <CR>", opt)
     map("n", m.find_files, ":Telescope find_files <CR>", opt)
-    map("n", m.media_files, ":Telescope media_files <CR>", opt)
     map("n", m.buffers, ":Telescope buffers<CR>", opt)
     map("n", m.help_tags, ":Telescope help_tags<CR>", opt)
     map("n", m.oldfiles, ":Telescope oldfiles<CR>", opt)
@@ -194,6 +206,11 @@ M.vim_test = function()
     map("n", "<leader>F", ":TestNearest<CR>", { silent = true })
 end
 
+M.telescope_media = function()
+    local m = user_map.telescope_media
+    map("n", m.media_files, ":Telescope media_files <CR>", opt)
+end
+
 M.bufferline = function()
     local m = user_map.bufferline
 
@@ -211,9 +228,6 @@ end
 -- map("n", "<Esc>", ":noh<CR>", opt)
 -- map("n", "<Leader><space>", ":noh<cr>", opt)
 
--- get out of terminal with jk
--- map("t", miscMap.esc_Termmode, "<C-\\><C-n>", opt)
-
 -- Packer commands till because we are not loading it at startup
 cmd("silent! command PackerCompile lua require 'pluginList' require('packer').compile()")
 cmd("silent! command PackerInstall lua require 'pluginList' require('packer').install()")
@@ -228,6 +242,20 @@ M.fugitive = function()
     map("n", m.diffget_2, ":diffget //2<CR>", opt)
     map("n", m.diffget_3, ":diffget //3<CR>", opt)
     map("n", m.git_blame, ":Git blame<CR>", opt)
+end
+
+-- navigation within insert mode
+local check_insertNav = require("chadrc").options.enable_insertNav
+
+if check_insertNav == true then
+    local m = user_map.insert_nav
+
+    map("i", m.forward, "<Right>", opt)
+    map("i", m.backward, "<Left>", opt)
+    map("i", m.top_of_line, "<ESC>^i", opt)
+    map("i", m.end_of_line, "<End>", opt)
+    map("i", m.next_line, "<Up>", opt)
+    map("i", m.prev_line, "<Down>", opt)
 end
 
 return M

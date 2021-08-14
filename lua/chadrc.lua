@@ -1,6 +1,11 @@
 local M = {
     ui = {
-        theme = "onedark"
+        theme = "onedark",
+        hidden_statusline = {
+            -- these are filetypes, not pattern matched
+            "NvimTree",
+            "toggleterm"
+        }
     },
     options = {
         permanent_undo = true,
@@ -18,26 +23,33 @@ local M = {
         shiftwidth = 2,
         smartindent = true,
         mapleader = "\\",
-        autosave = false
+        autosave = false,
+        enable_insertNav = true -- navigation within insertmode
     },
     -- enable / disable plugins (true for disable)
     plugin_status = {
-        better_esc = true,
+        -- UI
         nvim_bufferline = false,
         galaxyline = false,
         nvim_colorizer = false,
+        dashboard_nvim = false,
+        blankline = false,
+        truezen_nvim = false,
+        better_esc = true,
+        -- lsp stuff
         lspkind = false,
         lspsignature = false,
-        neoformat = false,
+        -- git stuff
         gitsigns = false,
-        vim_matchup = false,
-        dashboard_nvim = false,
-        autosave_nvim = false,
-        truezen_nvim = false,
-        blankline = false,
         vim_fugitive = false,
+        -- misc
+        toggleterm = true,
+        neoformat = false,
+        vim_matchup = false,
+        autosave_nvim = false,
         nvim_comment = false,
-        neoscroll_nvim = true
+        neoscroll_nvim = true,
+        telescope_media = false
     },
     -- make sure you dont use same keys twice
     mappings = {
@@ -69,11 +81,13 @@ local M = {
             git_commits = "<leader>gc",
             find_files = "<leader>ff",
             -- find_files = "<C-p>",
-            media_files = "<leader>fp",
             buffers = "<leader>fb",
             help_tags = "<leader>fh",
             oldfiles = "<leader>fo",
             themes = "<leader>th"
+        },
+        telescope_media = {
+            media_files = "<leader>fp"
         },
         bufferline = {
             new_buffer = "<S-t>",
@@ -88,13 +102,23 @@ local M = {
             diffget_3 = "<leader>gl",
             git_blame = "<leader>gb"
         },
+        toggleterm = {
+            toggle_window = "<leader>w",
+            toggle_right = "<leader>v",
+            toggle_bot = "<leader>h"
+        },
+        insert_nav = {
+            forward = "<C-l>",
+            backward = "<C-h>",
+            top_of_line = "<C-a>",
+            end_of_line = "<C-e>",
+            prev_line = "<C-j>",
+            next_line = "<C-k>"
+        },
         misc = {
-            openTerm_right = "<C-l>",
-            openTerm_bottom = "<C-x>",
-            openTerm_currentBuf = "<C-t>t",
+            esc_Termmode = "jk",
             copywhole_file = "<C-a>",
-            toggle_linenr = "<leader>n",
-            esc_Termmode = "jk"
+            toggle_linenr = "<leader>n"
         }
     }
 }
