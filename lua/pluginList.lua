@@ -20,7 +20,7 @@ return packer.startup(
 
         use {
             "jdhao/better-escape.vim",
-            disable = plugin_status.better_esc,
+            disable = not plugin_status.better_esc,
             event = "InsertEnter",
             config = function()
                 require "plugins.others".escape()
@@ -29,7 +29,7 @@ return packer.startup(
 
         use {
             "akinsho/nvim-bufferline.lua",
-            disable = plugin_status.nvim_bufferline,
+            disable = not plugin_status.nvim_bufferline,
             after = "nvim-base16.lua",
             config = function()
                 require "plugins.bufferline"
@@ -41,7 +41,7 @@ return packer.startup(
 
         use {
             "glepnir/galaxyline.nvim",
-            disable = plugin_status.galaxyline,
+            disable = not plugin_status.galaxyline,
             after = "nvim-base16.lua",
             config = function()
                 require "plugins.statusline"
@@ -59,7 +59,7 @@ return packer.startup(
 
         use {
             "norcalli/nvim-colorizer.lua",
-            disable = plugin_status.nvim_colorizer,
+            disable = not plugin_status.nvim_colorizer,
             event = "BufRead",
             config = function()
                 require("plugins.others").colorizer()
@@ -90,7 +90,7 @@ return packer.startup(
 
         use {
             "onsails/lspkind-nvim",
-            disable = plugin_status.lspkind,
+            disable = not plugin_status.lspkind,
             event = "BufEnter",
             config = function()
                 require("plugins.others").lspkind()
@@ -99,7 +99,7 @@ return packer.startup(
 
         use {
             "ray-x/lsp_signature.nvim",
-            disable = plugin_status.lspsignature,
+            disable = not plugin_status.lspsignature,
             after = "nvim-lspconfig",
             config = function()
                 require("plugins.others").signature()
@@ -135,7 +135,7 @@ return packer.startup(
 
         use {
             "sbdchd/neoformat",
-            disable = plugin_status.neoformat,
+            disable = not plugin_status.neoformat,
             cmd = "Neoformat",
             setup = function()
                 require "mappings".neoformat()
@@ -237,7 +237,7 @@ return packer.startup(
                 },
                 {
                     "nvim-telescope/telescope-media-files.nvim",
-                    disable = plugin_status.telescope_media,
+                    disable = not plugin_status.telescope_media,
                     setup = function()
                         require "mappings".telescope_media()
                     end
@@ -254,7 +254,7 @@ return packer.startup(
         -- git stuff
         use {
             "lewis6991/gitsigns.nvim",
-            disable = plugin_status.gitsigns,
+            disable = not plugin_status.gitsigns,
             after = "plenary.nvim",
             config = function()
                 require "plugins.gitsigns"
@@ -264,7 +264,7 @@ return packer.startup(
         -- misc plugins
         use {
             "akinsho/nvim-toggleterm.lua",
-            disable = plugin_status.toggleterm,
+            disable = not plugin_status.toggleterm,
             event = "BufWinEnter",
             config = function()
                 require "plugins.toggleterm"
@@ -283,13 +283,13 @@ return packer.startup(
 
         use {
             "andymass/vim-matchup",
-            disable = plugin_status.vim_matchup,
+            disable = not plugin_status.vim_matchup,
             event = "CursorMoved"
         }
 
         use {
             "terrortylor/nvim-comment",
-            disable = plugin_status.nvim_comment,
+            disable = not plugin_status.nvim_comment,
             cmd = "CommentToggle",
             config = function()
                 require("plugins.others").comment()
@@ -301,7 +301,7 @@ return packer.startup(
 
         use {
             "glepnir/dashboard-nvim",
-            disable = plugin_status.dashboard_nvim,
+            disable = not plugin_status.dashboard_nvim,
             cmd = {
                 "Dashboard",
                 "DashboardNewFile",
@@ -339,7 +339,7 @@ return packer.startup(
 
         -- load autosave only if its globally enabled
         use {
-            disable = plugin_status.autosave_nvim,
+            disable = not plugin_status.autosave_nvim,
             "Pocco81/AutoSave.nvim",
             config = function()
                 require "plugins.autosave"
@@ -352,7 +352,7 @@ return packer.startup(
         -- smooth scroll
         use {
             "karb94/neoscroll.nvim",
-            disable = plugin_status.neoscroll_nvim,
+            disable = not plugin_status.neoscroll_nvim,
             event = "WinScrolled",
             config = function()
                 require("plugins.others").neoscroll()
@@ -361,7 +361,7 @@ return packer.startup(
 
         use {
             "Pocco81/TrueZen.nvim",
-            disable = plugin_status.truezen_nvim,
+            disable = not plugin_status.truezen_nvim,
             cmd = {
                 "TZAtaraxis",
                 "TZMinimalist",
@@ -382,7 +382,7 @@ return packer.startup(
 
         use {
             "lukas-reineke/indent-blankline.nvim",
-            disable = plugin_status.blankline,
+            disable = not plugin_status.blankline,
             event = "BufRead",
             setup = function()
                 require("plugins.others").blankline()
@@ -391,7 +391,7 @@ return packer.startup(
 
         use {
             "tpope/vim-fugitive",
-            disable = plugin_status.vim_fugitive,
+            disable = not plugin_status.vim_fugitive,
             -- cmd = {
             --     "Git"
             -- },
