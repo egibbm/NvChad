@@ -2,7 +2,7 @@ local M = {
    ui = {
       theme = "onedark",
       fav_themes = { "onedark", "gruvchad" }, -- for theme toggle
-      theme_toggler = false,
+      theme_toggler = true,
       hidden_statusline = {
          -- these are filetypes, not pattern matched
          "NvimTree",
@@ -82,8 +82,8 @@ local M = {
          live_grep = "<leader>fw",
          git_status = "<leader>gt",
          git_commits = "<leader>gc",
-         find_files = "<leader>ff",
-         -- find_files = "<C-p>",
+         -- find_files = "<leader>ff",
+         find_files = "<C-p>",
          buffers = "<leader>fb",
          help_tags = "<leader>fh",
          oldfiles = "<leader>fo",
