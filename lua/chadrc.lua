@@ -68,7 +68,8 @@ local M = {
             findfile = "<leader>G"
         },
         neoformat = {
-            format = "<leader>fm"
+            format = "<C-A-l>"
+            -- format = "<leader>fm"
         },
         dashboard = {
             open = "<leader>db",
