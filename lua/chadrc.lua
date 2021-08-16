@@ -52,6 +52,7 @@ local M = {
       nvim_comment = true,
       neoscroll_nvim = false,
       telescope_media = true,
+      cheatsheet = false,
    },
    -- make sure you dont use same keys twice
    mappings = {
@@ -91,6 +92,10 @@ local M = {
       },
       telescope_media = {
          media_files = "<leader>fp",
+      },
+      chadsheet = {
+         default_keys = "<leader>dk",
+         user_keys = "<leader>uk",
       },
       bufferline = {
          new_buffer = "<S-t>",
