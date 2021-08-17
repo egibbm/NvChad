@@ -185,7 +185,10 @@ return packer.startup(function()
       },
       config = function()
          require "rails"
-      end
+      end,
+      setup = function()
+         require("mappings").rails()
+      end,
    }
 
    use {"mfukar/robotframework-vim", ft = 'robot'}
