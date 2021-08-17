@@ -163,8 +163,8 @@ return packer.startup(function()
    use {"slim-template/vim-slim", ft='slim'}
    use {'tpope/vim-dispatch', opt = true, cmd = {'Dispatch', 'Make', 'Focus', 'Start'}}
    use {
-      "vim-ruby/vim-ruby", 
-      opt = true, 
+      "vim-ruby/vim-ruby",
+      opt = true,
       ft = 'ruby',
       requires = {
          "thoughtbot/vim-rspec",
@@ -333,7 +333,7 @@ return packer.startup(function()
 
    use "junegunn/gv.vim"
    use {
-      "rcarriga/vim-ultest", 
+      "rcarriga/vim-ultest",
       run = ":UpdateRemotePlugins",
       requires = {
          {
@@ -406,5 +406,12 @@ return packer.startup(function()
       setup = function()
          require("mappings").fugitive()
       end,
+   }
+
+   use {
+     "cappyzawa/trim.nvim",
+     setup = function()
+       disable = { "markdown" }
+     end
    }
 end)

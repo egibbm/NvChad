@@ -65,7 +65,7 @@ local M = {
          comment_toggle = "<C-_>",
       },
       nvimtree = {
-         treetoggle = "<C-n>",
+         treetoggle = "<leader>gg",
          findfile = "<leader>G"
       },
       neoformat = {
@@ -111,7 +111,7 @@ local M = {
          git_blame = "<leader>gb",
       },
       toggleterm = {
-         toggle_window = "<leader>w",
+         toggle_window = "<leader>w", -- conflicts with easy wrap toggling
          toggle_vert = "<leader>v",
          toggle_hori = "<leader>h",
          hide_term = "JK",

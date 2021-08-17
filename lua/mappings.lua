@@ -57,6 +57,16 @@ M.toggleterm = function()
    map("t", m.hide_term, "<C-\\><C-n> :ToggleTerm <CR>", opt)
    map("t", m.hide_term, "<C-\\><C-n> :ToggleTerm <CR>", opt)
    map("t", m.hide_term, "<C-\\><C-n> :ToggleTerm <CR>", opt)
+
+   -- terminal navigation remap
+   map("t", "<A-j>", "<C-W>j", opt)
+   map("t", "<A-k>", "<C-W>k", opt) 
+   map("t", "<A-h>", "<C-W>h", opt) 
+   map("t", "<A-l>", "<C-W>l", opt) 
+   map("t", "<C-j>", "<C-W>j", opt) 
+   map("t", "<C-k>", "<C-W>k", opt) 
+   map("t", "<C-h>", "<C-W>h", opt) 
+   map("t", "<C-l>", "<C-W>l", opt) 
 end
 
 M.truezen = function()
@@ -118,7 +128,7 @@ map("n", "Y", "y$", opt)
 map("n", "vv", "`[V`]", opt)
 
 -- clean up trailing whitespace
-map("", "<Leader>c", ":StripTrailingWhitespaces<cr>", opt)
+map("", "<Leader>c", ":lua require('trim.trimmer').trim()<cr>", opt)
 
 -- compress excess whitespace on current line
 map("", "<Leader>e", ":s/\\v(\\S+)\\s+/\\1 /<cr>:nohl<cr>", opt)
@@ -259,7 +269,7 @@ M.bufferline = function()
 end
 
 -- use ESC to turn off search highlighting
--- map("n", "<Esc>", ":noh<CR>", opt)
+map("n", "<leader><space>", ":noh<CR>", opt)
 
 -- Packer commands till because we are not loading it at startup
 cmd "silent! command PackerCompile lua require 'pluginList' require('packer').compile()"
