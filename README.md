@@ -157,7 +157,7 @@ It would be nice if NvChad focuses on existing plugins and config before adding 
 - PR's are always welcomed however NvChad aims to be less bloated. So PR's regarding existing plugin's enhancement and creating new features with existing plugins itself ( without adding a new plugin), bug fixes and corrections are more encouraged.
 - PR's regarding adding new plugins and their configs must be given some thought since NvChad is meant to be used as a "base" neovim config so it will have only a set of important plugins. So adding more and more opiniated plugins, making NvChad's config large unnecessarily + slow wont help!.
 - NvChad wont keep adding more and more features (like adding new plugins most likely) as requested if they feel unneeded and arent usable by the majority, no spoonfeeding!! If you think the plugin you want to be added is very useful and many NvChaders would find it useful, then such feature's PR is welcomed!
-- But adding specific features like adding config for https://github.com/wakatime/vim-wakatime etc will be added in this https://github.com/siduck76/NvChad/wiki/Chad-user-configs. This lets the user select the things only they want ( adding configs from extra configs ) .
+- But adding specific features like adding config for https://github.com/wakatime/vim-wakatime etc will be added in this https://github.com/NvChad/NvChad/wiki/Chad-user-configs. This lets the user select the things only they want ( adding configs from extra configs ) .
 
 # Chad contributors 
 
@@ -176,3 +176,7 @@ It is never required but always appreciated.
   <a href="https://ko-fi.com/siduck76" target="_blank"><img alt="undefined" width="48px" src="https://raw.githubusercontent.com/adi1090x/files/master/other/2.png"></a>
   <a href="https://www.paypal.com/paypalme/siduck76" target="_blank"><img alt="undefined" width="48px" src="https://raw.githubusercontent.com/adi1090x/files/master/other/3.png"></a>
 </p>
+
+## Warning
+
+I get hearings from some plugin devs that nvchad users bring issues on discourse/reddit/matrix/gh repos etc. Please dont do that :/ . Bring NvChad related issues here ONLY and dont ever bother plugin devs, THIS IS A CLEAR WARNING! 😠

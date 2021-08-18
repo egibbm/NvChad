@@ -1,4 +1,4 @@
--- IMPORTANT NOTE : This is user config
+-- IMPORTANT NOTE : This is default config, so dont change anything here. (check chadrc.lua instead)
 
 local M = {}
 
@@ -13,6 +13,7 @@ M.ui = {
    hidden_statusline = {
       -- these are filetypes, not pattern matched
       "NvimTree",
+      "toggleterm",
    },
 }
 
@@ -31,7 +32,7 @@ M.options = {
    expandtab = true,
    shiftwidth = 2,
    smartindent = true,
-   mapleader = "\\",
+   mapleader = " ",
    autosave = false,
    enable_insertNav = true, -- navigation in insertmode
 }
@@ -45,7 +46,7 @@ M.plugin_status = {
    dashboard_nvim = true,
    blankline = true,
    truezen_nvim = true,
-   better_esc = false,
+   better_esc = true,
    -- lsp stuff
    lspkind = true,
    lspsignature = true,
@@ -57,7 +58,7 @@ M.plugin_status = {
    vim_matchup = true,
    autosave_nvim = true,
    nvim_comment = true,
-   neoscroll_nvim = false,
+   neoscroll_nvim = true,
    telescope_media = true,
    cheatsheet = false,
 }
@@ -71,29 +72,26 @@ M.mappings = {
       focusmode = "<leader>zf",
    },
    comment_nvim = {
-      comment_toggle = "<C-_>",
+      comment_toggle = "<leader>/",
    },
    nvimtree = {
-      treetoggle = "<leader>gg", -- file manager
-      findfile = "<leader>G"
+      treetoggle = "<C-n>", -- file manager
    },
    neoformat = {
-      format = "<C-A-l>",
-      -- format = "<leader>fm"
+      format = "<leader>fm",
    },
    dashboard = {
       open = "<leader>db",
       newfile = "<leader>fn",
       bookmarks = "<leader>bm",
-      sessionload = "<C-s>l",
-      sessionsave = "<C-s>s",
+      sessionload = "<leader>l",
+      sessionsave = "<leader>s",
    },
    telescope = {
       live_grep = "<leader>fw",
       git_status = "<leader>gt",
-      git_commits = "<leader>gc",
-      -- find_files = "<leader>ff",
-      find_files = "<C-p>",
+      git_commits = "<leader>cm",
+      find_files = "<leader>ff",
       buffers = "<leader>fb",
       help_tags = "<leader>fh",
       oldfiles = "<leader>fo",
@@ -109,7 +107,6 @@ M.mappings = {
    bufferline = {
       new_buffer = "<S-t>",
       newtab = "<C-t>b",
-      close = "<S-x>", -- close a buffer with custom func in utils.lua
       cycleNext = "<TAB>", -- next buffer
       cyclePrev = "<S-Tab>", -- previous buffer
    },
@@ -119,14 +116,11 @@ M.mappings = {
       diffget_3 = "<leader>gl",
       git_blame = "<leader>gb",
    },
-   terms = { 
-      -- below are NvChad mappings, not plugin mappings
-      esc_termmode = "jk",
-      esc_hide_termmode = "JK",
-      pick_term = "<leader>W", -- note: this is a telescope extension
-      new_wind = "<leader>w",
-      new_vert = "<leader>v",
-      new_hori = "<leader>h",
+   toggleterm = {
+      toggle_window = "<leader>w",
+      toggle_vert = "<leader>v",
+      toggle_hori = "<leader>h",
+      hide_term = "JK",
    },
    -- navigation in insert mode
    insert_nav = {
@@ -137,13 +131,14 @@ M.mappings = {
       prev_line = "<C-j>",
       next_line = "<C-k>",
    },
+   -- non plugin
    misc = {
+      esc_Termmode = "jk", -- get out of terminal mode
+      close_buffer = "<S-x>", -- close current focused buffer
       copywhole_file = "<C-a>",
       toggle_linenr = "<leader>n", -- show or hide line number
       theme_toggle = "<leader>x",
    },
 }
-
-M = vim.tbl_deep_extend("force", require "default_config", M)
 
 return M
