@@ -4,17 +4,25 @@ local M = {}
 
 M.ui = {
    theme = "onedark",
-   -- for theme toggle
+
+   -- theme toggle
+   theme_toggler = false,
    fav_themes = {
       "onedark",
       "gruvchad",
    },
-   theme_toggler = false,
+   italic_comments = false,
+
+   -- Enable this only if your terminal has the colorscheme set which nvchad uses
+   -- For Ex : if you have onedark set in nvchad , set onedark's bg color on your terminal
+   transparency = false,
+
    hidden_statusline = {
       -- these are filetypes, not pattern matched
       "NvimTree",
-      -- "terminal", 
+      -- "terminal",
    },
+   statusline_style = "default", -- default, round , slant , block , arrow
 }
 
 M.options = {
@@ -28,7 +36,7 @@ M.options = {
    timeoutlen = 400,
    clipboard = "unnamedplus",
    number = true,
-   -- relative numbers in normal mode tool at the bottom of options.lua  
+   -- relative numbers in normal mode tool at the bottom of options.lua
    relativenumber = false,
    numberwidth = 2,
    expandtab = true,
@@ -37,6 +45,9 @@ M.options = {
    mapleader = "\\",
    autosave = false,
    enable_insertNav = true, -- navigation in insertmode
+   -- used for updater
+   update_url = "https://github.com/NvChad/NvChad",
+   update_branch = "main",
 }
 
 -- enable and disable plugins (false for disable)
@@ -62,7 +73,7 @@ M.plugin_status = {
    nvim_comment = true,
    neoscroll_nvim = false,
    telescope_media = true,
-   cheatsheet = false,
+   cheatsheet = true,
 }
 
 -- make sure you dont use same keys twice
@@ -144,9 +155,8 @@ M.mappings = {
       copywhole_file = "<C-a>",
       toggle_linenr = "<leader>n", -- show or hide line number
       theme_toggle = "<leader>x",
+      update_nvchad = "<leader>uu",
    },
 }
-
-M = vim.tbl_deep_extend("force", require "default_config", M)
 
 return M

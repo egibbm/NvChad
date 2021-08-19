@@ -1,4 +1,4 @@
-local plugin_status = require("chadrc").plugin_status
+local plugin_status = require("utils").load_config().plugin_status
 
 local present, _ = pcall(require, "packerInit")
 local packer
@@ -242,6 +242,7 @@ return packer.startup(function()
          {
             "sudormrfbin/cheatsheet.nvim",
             disable = not plugin_status.cheatsheet,
+            event = "VimEnter",
             after = "telescope.nvim",
             config = function()
                require "plugins.chadsheet"

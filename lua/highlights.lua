@@ -41,11 +41,20 @@ fg("IndentBlanklineChar", line)
 
 -- misc --
 fg("LineNr", grey)
-fg("Comment", grey_fg)
+
+-- Comments
+local ui = require("utils").load_config().ui
+
+if ui.italic_comments then
+   cmd("hi Comment gui=italic guifg=" .. grey_fg)
+else
+   fg("Comment", grey_fg)
+end
+
 fg("NvimInternalError", red)
 fg("VertSplit", line)
 fg("EndOfBuffer", black)
---fg_bg("Visual",light_grey, colors.lightbg)
+-- fg_bg("Visual",light_grey, colors.lightbg)
 
 -- Pmenu
 bg("Pmenu", one_bg)
@@ -76,7 +85,7 @@ fg("NvimTreeVertSplit", darker_black)
 bg("NvimTreeVertSplit", darker_black)
 fg("NvimTreeEndOfBuffer", darker_black)
 
-cmd("hi NvimTreeRootFolder gui=underline guifg=" .. purple)
+cmd("hi NvimTreeRootFolder gui=underline guifg=" .. red)
 bg("NvimTreeNormal", darker_black)
 fg_bg("NvimTreeStatuslineNc", darker_black, darker_black)
 fg_bg("NvimTreeWindowPicker", red, black2)
@@ -110,10 +119,17 @@ fg("DashboardCenter", grey_fg)
 fg("DashboardShortcut", grey_fg)
 fg("DashboardFooter", grey_fg)
 
--- packer's floating window
+if require("utils").load_config().ui.transparency then
+   bg("Normal", "NONE")
+   bg("Folded", "NONE")
+   fg("Folded", "NONE")
+   bg("NvimTreeNormal", "NONE")
+   bg("NvimTreeVertSplit", "NONE")
+   fg("NvimTreeVertSplit", grey)
+   bg("NvimTreeStatusLineNC", "NONE")
+   fg("Comment", grey)
+end
 
+-- For floating windows
 bg("NormalFloat", one_bg)
 fg("FloatBorder", blue)
-
--- set bg color for nvim
--- bg("Normal", black)

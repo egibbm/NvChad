@@ -4,17 +4,25 @@ local M = {}
 
 M.ui = {
    theme = "onedark",
-   -- for theme toggle
+
+   -- theme toggle
+   theme_toggler = false,
    fav_themes = {
       "onedark",
       "gruvchad",
    },
-   theme_toggler = false,
+   italic_comments = false,
+
+   -- Enable this only if your terminal has the colorscheme set which nvchad uses
+   -- For Ex : if you have onedark set in nvchad , set onedark's bg color on your terminal
+   transparency = false,
+
    hidden_statusline = {
       -- these are filetypes, not pattern matched
       "NvimTree",
-      -- "terminal",
+      "terminal",
    },
+   statusline_style = "default", -- default, round , slant , block , arrow
 }
 
 M.options = {
@@ -36,6 +44,9 @@ M.options = {
    mapleader = " ",
    autosave = false,
    enable_insertNav = true, -- navigation in insertmode
+   -- used for updater
+   update_url = "https://github.com/NvChad/NvChad",
+   update_branch = "main",
 }
 
 -- enable and disable plugins (false for disable)
@@ -61,7 +72,7 @@ M.plugin_status = {
    nvim_comment = true,
    neoscroll_nvim = true,
    telescope_media = true,
-   cheatsheet = false,
+   cheatsheet = true,
 }
 
 -- make sure you dont use same keys twice
@@ -108,6 +119,7 @@ M.mappings = {
    bufferline = {
       new_buffer = "<S-t>",
       newtab = "<C-t>b",
+      close = "<S-x>", -- close a buffer with custom func in utils.lua
       cycleNext = "<TAB>", -- next buffer
       cyclePrev = "<S-Tab>", -- previous buffer
    },
@@ -117,13 +129,14 @@ M.mappings = {
       diffget_3 = "<leader>gl",
       git_blame = "<leader>gb",
    },
-   toggleterm = {
-      toggle_window = "<leader>w",
-      toggle_vert = "<leader>v",
-      toggle_hori = "<leader>h",
-      hide_term = "JK",
-   },
-   -- navigation in insert mode
+   terms = { -- below are NvChad mappings, not plugin mappings
+      esc_termmode = "jk",
+      esc_hide_termmode = "JK",
+      pick_term = "<leader>W", -- note: this is a telescope extension
+      new_wind = "<leader>w",
+      new_vert = "<leader>v",
+      new_hori = "<leader>h",
+   }, -- navigation in insert mode
    insert_nav = {
       forward = "<C-l>",
       backward = "<C-h>",
@@ -139,6 +152,7 @@ M.mappings = {
       copywhole_file = "<C-a>",
       toggle_linenr = "<leader>n", -- show or hide line number
       theme_toggle = "<leader>x",
+      update_nvchad = "<leader>uu",
    },
 }
 
