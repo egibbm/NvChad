@@ -45,6 +45,14 @@
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/initialNvim1.png"><hr>
 <img src ="https://raw.githubusercontent.com/siduck76/dotfiles/master/rice%20flex/initialNvim.png"><hr>
 
+
+# Some theme showcases :D
+
+![onedark](https://user-images.githubusercontent.com/59060246/130129880-59ab1ad5-9aa6-4f50-9ddd-d8dde0c16257.png)
+![nord](https://user-images.githubusercontent.com/59060246/130129890-c01117df-ac3d-40dd-b95d-2681c2461bb4.png)
+![gruvchad](https://user-images.githubusercontent.com/59060246/130129897-a68b1585-f42d-4325-8482-102dd2fe1e9e.png)
+![everforest](https://user-images.githubusercontent.com/59060246/130129901-5e582f3e-b776-4d0c-9790-be5ae738b5a8.png)
+
 # Very Very Useful lua plugins used in my config
 
 #### Lspkind-nvim
@@ -94,7 +102,8 @@ without / with Treesitter:
 
 # Credits
 
-[Elianiva](https://github.com/elianiva) helped me with neovim lua related issues many times, NvChad wouldnt exist without his help at all!
+- [Elianiva](https://github.com/elianiva) helped me with neovim lua related issues many times, NvChad wouldnt exist without his help at all!
+- @lorvethe for making NvChad logo!
 
 # Features
 
@@ -134,11 +143,8 @@ without / with Treesitter:
 It would be nice if NvChad focuses on existing plugins and config before adding new things. Some plugins like whichkey, telescope and treesitter still have basic configs! Also adding new features that'd make NvChad slow or its startup time slow wouldn't be encouraged. If that feature is really needed then it'll be mentioned in the wiki with its config.
 
 - Debloat the config.
-- Make NvChad more faster (reduce startup time too).
-- Add another section in the wiki explaining the whole config (must be helpful for newbies).
+- Make NvChad more and more faster (reduce startup time as low as possible).
 - Add more themes.
-- Preview shortcuts in the form of a pretty [cheatsheet](https://user-images.githubusercontent.com/59060246/122490009-95fd9980-cffe-11eb-9676-78019aa2cd65.png).
-- Add a user config so it doesnt get hard to update :c
 
 # Chad contributors 
 
@@ -146,18 +152,17 @@ It would be nice if NvChad focuses on existing plugins and config before adding 
   <img src = "https://contrib.rocks/image?repo=siduck76/NvChad"/>
 </a>
 
-## :gift_heart: Support
-
-If you enjoy using NvChad and would like to show your appreciation, you may want to tip me here.
-
-It is never required but always appreciated.
-
-<p align="center">
-  <a href="https://www.buymeacoffee.com/siduck7" target="_blank"><img alt="undefined" width="48px" src="https://raw.githubusercontent.com/adi1090x/files/master/other/1.png"></a>
-  <a href="https://ko-fi.com/siduck76" target="_blank"><img alt="undefined" width="48px" src="https://raw.githubusercontent.com/adi1090x/files/master/other/2.png"></a>
-  <a href="https://www.paypal.com/paypalme/siduck76" target="_blank"><img alt="undefined" width="48px" src="https://raw.githubusercontent.com/adi1090x/files/master/other/3.png"></a>
-</p>
-
 ## Warning
 
 I get hearings from some plugin devs that nvchad users bring issues on discourse/reddit/matrix/gh repos etc. Please dont do that :/ . Bring NvChad related issues here ONLY and dont ever bother plugin devs, THIS IS A CLEAR WARNING! 😠
+
+## :gift_heart: Support
+
+I (siduck76) would happily accept donations but I would be upset and feel bad since Im not the only one who has worked on NvChad. NvChad has been made possible by many contributors so dividing the donations for just me feels very bad and thanks to all the plugin creators once again :'). If you enjoy using NvChad and would like to show your support trully and show your appreciation to my work then try to be a better you! Help the needy people whenever possible (in real life), do some charity.Be nice to your parents and loved ones.Do not be rude , always try to be helpful / caring to one another, stray animals. Its easier to hate now and harder to care , hate used to be rare but now you see it everywhere. Please be respectful to any software/work done by other people rather than making fun of them. Do not compare software (In a bad way). Im grateful to be even able to use neovim! But cant still be fully happy when I think there are people who barely get food to eat, starve for weeks, dont have access to proper education, comupters, basic health care facilities etc.
+
+The following links are some donation (gofundme) links for supporting needy people. Feel free to donate if you can :
+
+- https://www.gofundme.com/f/WeCareAboutSyria
+- https://www.gofundme.com/f/Burundi-Nutrition
+- https://charity.gofundme.com/o/en/campaign/feedingyemen
+- https://www.gofundme.com/f/6p8ea-give-ghanaian-orphans-the-gift-of-a-ride-to-school

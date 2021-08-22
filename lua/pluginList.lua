@@ -219,10 +219,6 @@ return packer.startup(function()
       "nvim-lua/plenary.nvim",
       after = "nvim-bufferline.lua",
    }
-   use {
-      "nvim-lua/popup.nvim",
-      after = "plenary.nvim",
-   }
 
    use {
       "nvim-telescope/telescope.nvim",
@@ -242,7 +238,6 @@ return packer.startup(function()
          {
             "sudormrfbin/cheatsheet.nvim",
             disable = not plugin_status.cheatsheet,
-            event = "VimEnter",
             after = "telescope.nvim",
             config = function()
                require "plugins.chadsheet"
