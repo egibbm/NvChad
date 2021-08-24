@@ -4,7 +4,7 @@ local M = {}
 
 -- non plugin ui configs, available without any plugins
 M.ui = {
-   italic_comments = false,
+   italic_comments = true,
 
    -- theme to be used, to see all available themes, open the theme switcher by <leader> + th
    theme = "onedark",
@@ -71,13 +71,13 @@ M.options.plugin = {
 
 -- enable and disable plugins (false for disable)
 M.plugin_status = {
-   autosave = true, -- to autosave files
+   autosave = false, -- to autosave files
    blankline = true, -- beautified blank lines
    bufferline = true, -- buffer shown as tabs
-   cheatsheet = true, -- fuzzy search your commands/keymappings
+   cheatsheet = false, -- fuzzy search your commands/keymappings
    colorizer = true,
    comment = true, -- universal commentor
-   dashboard = true, -- a nice looking dashboard
+   dashboard = false, -- a nice looking dashboard
    esc_insertmode = false, -- escape from insert mode using custom keys
    galaxyline = true, -- statusline
    gitsigns = true, -- gitsigns in statusline
@@ -161,14 +161,14 @@ M.mappings.plugin = {
    },
    nvimtree = {
       toggle = "<leader>gg", -- file manager
-   findfile = "<leader>G"
+      findfile = "<leader>G"
    },
    neoformat = {
-      format = "<leader>fm",
+      format = "<C-A-l>",
    },
    telescope = {
       buffers = "<leader>fb",
-      find_files = "<leader>ff",
+      find_files = "<C-p>",
       git_commits = "<leader>gc",
       git_status = "<leader>gt",
       help_tags = "<leader>fh",
