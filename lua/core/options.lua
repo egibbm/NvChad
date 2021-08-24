@@ -4,70 +4,72 @@ local g = vim.g
 -- export user config as a global varibale
 g.nvchad_user_config = "chadrc"
 
-local options = require("utils").load_config().options
+local options = require("core.utils").load_config().options
 
-opt.completeopt = { "menuone", "noselect" }
-opt.undofile = options.permanent_undo
-opt.ruler = options.ruler
-opt.hidden = options.hidden
-opt.ignorecase = options.ignorecase
-opt.smartcase = true
-opt.splitbelow = true
-opt.splitright = true
-opt.termguicolors = true
-opt.gdefault = true
-opt.autoread = true
-opt.cul = true
-opt.mouse = options.mouse
-opt.signcolumn = "yes"
-opt.cmdheight = options.cmdheight
-opt.updatetime = options.updatetime -- update interval for gitsigns
-opt.timeoutlen = options.timeoutlen
 opt.clipboard = options.clipboard
+opt.cmdheight = options.cmdheight
+opt.completeopt = { "menuone", "noselect" }
+opt.cul = true -- cursor line
 
--- disable nvim intro
-opt.shortmess:append "sI"
+-- Indentline
+opt.expandtab = options.expandtab
+opt.shiftwidth = options.shiftwidth
+opt.smartindent = options.smartindent
 
 -- disable tilde on end of buffer: https://github.com/  neovim/neovim/pull/8546#issuecomment-643643758
 opt.fillchars = { eob = " " }
+
+opt.hidden = options.hidden
+opt.ignorecase = options.ignorecase
+opt.mouse = options.mouse
+opt.smartcase = true
 
 -- Numbers
 opt.number = options.number
 opt.numberwidth = options.numberwidth
 opt.relativenumber = options.relativenumber
+opt.ruler = options.ruler
 
--- Indenline
-opt.expandtab = options.expandtab
-opt.shiftwidth = options.shiftwidth
-opt.smartindent = options.smartindent
+-- disable nvim intro
+opt.shortmess:append "sI"
+opt.signcolumn = "yes"
+opt.splitbelow = true
+opt.splitright = true
+opt.termguicolors = true
+opt.timeoutlen = options.timeoutlen
+opt.undofile = options.permanent_undo
+
+-- interval for writing swap file to disk, also used by gitsigns
+opt.updatetime = options.updatetime
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
 opt.whichwrap:append "<>hl"
 
 g.mapleader = options.mapleader
-g.auto_save = options.autosave
+opt.gdefault = true
+opt.autoread = true
 
--- disable builtin vim plugins
+-- disable some builtin vim plugins
 local disabled_built_ins = {
+   "2html_plugin",
+   "getscript",
+   "getscriptPlugin",
+   "gzip",
+   "logipat",
    "netrw",
    "netrwPlugin",
    "netrwSettings",
    "netrwFileHandlers",
-   "gzip",
-   "zip",
-   "zipPlugin",
+   "matchit",
    "tar",
    "tarPlugin",
-   "getscript",
-   "getscriptPlugin",
-   "vimball",
-   "vimballPlugin",
-   "2html_plugin",
-   "logipat",
    "rrhelper",
    "spellfile_plugin",
-   "matchit",
+   "vimball",
+   "vimballPlugin",
+   "zip",
+   "zipPlugin",
 }
 
 for _, plugin in pairs(disabled_built_ins) do
@@ -82,10 +84,10 @@ end
 -- vim.cmd[[ au InsertLeave * set relativenumber ]]
 
 -- Don't show any numbers inside terminals
-vim.cmd [[ au TermOpen term://* setlocal nonumber norelativenumber | setfiletype terminal ]]
+-- vim.cmd [[ au TermOpen term://* setlocal nonumber norelativenumber | setfiletype terminal ]]
 
 -- Don't show status line on certain windows
-vim.cmd [[ autocmd BufEnter,BufWinEnter,WinEnter,CmdwinEnter,TermEnter * lua require("utils").hide_statusline() ]]
+-- vim.cmd [[ autocmd BufEnter,BufWinEnter,WinEnter,CmdwinEnter,TermEnter * lua require("utils").hide_statusline() ]]
 
 -- Open a file from its last left off position
 -- vim.cmd [[ au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif ]]
