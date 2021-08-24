@@ -180,6 +180,7 @@ M.misc = function()
       -- terminal mappings end --
 
       -- Add Packer commands because we are not loading it at startup
+      cmd "silent! command PackerClean lua require 'plugins' require('packer').clean()"
       cmd "silent! command PackerCompile lua require 'plugins' require('packer').compile()"
       cmd "silent! command PackerInstall lua require 'plugins' require('packer').install()"
       cmd "silent! command PackerStatus lua require 'plugins' require('packer').status()"
@@ -240,6 +241,7 @@ end
 
 M.nvimtree = function()
    map("n", plugin_maps.nvimtree.toggle, ":NvimTreeToggle <CR>", opt)
+   map("n", plugin_maps.nvimtree.focus,  ":NvimTreeFocus <CR>", opt)
    map("n", plugin_maps.nvimtree.findfile, ":NvimTreeFindFile<CR>", opt)
 end
 

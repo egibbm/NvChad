@@ -13,7 +13,7 @@ return packer.startup(function()
 
    -- this is the nvchad core repo containing utilities for some features like theme swticher, no need to lazy load
    use {
-      "Nvchad/core",
+      "Nvchad/extensions",
    }
 
    use {
@@ -60,51 +60,17 @@ return packer.startup(function()
 
    use {
       "nvim-lua/plenary.nvim",
-      after = "bufferline.nvim",
    }
 
    -- git stuff
    use {
       "lewis6991/gitsigns.nvim",
       disable = not plugin_status.gitsigns,
-      after = "plenary.nvim",
+      cond = function()
+         return vim.fn.isdirectory ".git" == 1
+      end,
       config = function()
          require "plugins.configs.gitsigns"
-      end,
-   }
-
-   use {
-      "nvim-telescope/telescope.nvim",
-      after = "plenary.nvim",
-      requires = {
-         {
-            "sudormrfbin/cheatsheet.nvim",
-            disable = not plugin_status.cheatsheet,
-            after = "telescope.nvim",
-            config = function()
-               require "plugins.configs.chadsheet"
-            end,
-            setup = function()
-               require("core.mappings").chadsheet()
-            end,
-         },
-         {
-            "nvim-telescope/telescope-fzf-native.nvim",
-            run = "make",
-         },
-         {
-            "nvim-telescope/telescope-media-files.nvim",
-            disable = not plugin_status.telescope_media,
-            setup = function()
-               require("core.mappings").telescope_media()
-            end,
-         },
-      },
-      config = function()
-         require "plugins.configs.telescope"
-      end,
-      setup = function()
-         require("core.mappings").telescope()
       end,
    }
 
@@ -285,12 +251,49 @@ return packer.startup(function()
    -- file managing , picker etc
    use {
       "kyazdani42/nvim-tree.lua",
-      cmd = "NvimTreeToggle",
+      cmd = { "NvimTreeToggle", "NvimTreeFocus" },
       config = function()
          require "plugins.configs.nvimtree"
       end,
       setup = function()
          require("core.mappings").nvimtree()
+      end,
+   }
+
+   use {
+      "nvim-telescope/telescope.nvim",
+      cmd = "Telescope",
+      -- because cheatsheet is not activated by a teleacope command
+      module = "cheatsheet",
+      requires = {
+         {
+            "sudormrfbin/cheatsheet.nvim",
+            disable = not plugin_status.cheatsheet,
+            after = "telescope.nvim",
+            config = function()
+               require "plugins.configs.chadsheet"
+            end,
+            setup = function()
+               require("core.mappings").chadsheet()
+            end,
+         },
+         {
+            "nvim-telescope/telescope-fzf-native.nvim",
+            run = "make",
+         },
+         {
+            "nvim-telescope/telescope-media-files.nvim",
+            disable = not plugin_status.telescope_media,
+            setup = function()
+               require("core.mappings").telescope_media()
+            end,
+         },
+      },
+      config = function()
+         require "plugins.configs.telescope"
+      end,
+      setup = function()
+         require("core.mappings").telescope()
       end,
    }
 
@@ -315,6 +318,11 @@ return packer.startup(function()
       disable = not plugin_status.vim_fugitive,
       cmd = {
          "Git",
+         "Gdiff",
+         "Gdiffsplit",
+         "Gvdiffsplit",
+         "Gwrite",
+         "Gw",
       },
       setup = function()
          require("core.mappings").vim_fugitive()

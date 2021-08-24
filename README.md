@@ -5,7 +5,7 @@
   <span> • </span>
     	<a href="https://nvchad.netlify.app/getting-started/setup">Install</a>
   <span> • </span>
-       	<a href="https://nvchad.netlify.app/docs/Contribute">Contribute</a>
+       	<a href="https://nvchad.netlify.app/contribute">Contribute</a>
   <span> • </span>
 	<a href="https://github.com/siduck76/NvChad#gift_heart-support">Support</a>
   <span> • </span>
@@ -146,7 +146,20 @@ It would be nice if NvChad focuses on existing plugins and config before adding 
 - Make NvChad more and more faster (reduce startup time as low as possible).
 - Add more themes.
 
-# Chad contributors 
+# Try in docker
+
+Try NvChad in a docker container. This will leave your current Neovim configuration untouched. Once you exit Neovim, the image is deleted.
+
+```zsh
+  docker run -w /root -it --rm alpine:edge sh -uelic '
+    apk add git nodejs neovim ripgrep alpine-sdk --update
+    git clone https://github.com/NvChad/NvChad ~/.config/nvim
+    nvim -c "autocmd User PackerComplete quitall" -c "PackerSync"
+    nvim
+    '
+```
+
+# Chad contributors
 
 <a href = "https://github.com/NvChad/NvChad/graphs/contributors">
   <img src = "https://contrib.rocks/image?repo=siduck76/NvChad"/>
@@ -158,7 +171,7 @@ I get hearings from some plugin devs that nvchad users bring issues on discourse
 
 ## :gift_heart: Support
 
-I (siduck76) would happily accept donations but I would be upset and feel bad since Im not the only one who has worked on NvChad. NvChad has been made possible by many contributors so dividing the donations for just me feels very bad and thanks to all the plugin creators once again :'). If you enjoy using NvChad and would like to show your support trully and show your appreciation to my work then try to be a better you! Help the needy people whenever possible (in real life), do some charity.Be nice to your parents and loved ones.Do not be rude , always try to be helpful / caring to one another, stray animals. Its easier to hate now and harder to care , hate used to be rare but now you see it everywhere. Please be respectful to any software/work done by other people rather than making fun of them. Do not compare software (In a bad way). Im grateful to be even able to use neovim! But cant still be fully happy when I think there are people who barely get food to eat, starve for weeks, dont have access to proper education, comupters, basic health care facilities etc.
+I (siduck76) would happily accept donations but I would be upset and feel bad since Im not the only one who has worked on NvChad. NvChad has been made possible by many contributors so dividing the donations for just me feels very bad and thanks to all the plugin creators once again :'). If you enjoy using NvChad and would like to show your support truly and show your appreciation to my work then try to be a better you! Help the needy people whenever possible (in real life), do some charity.Be nice to your parents and loved ones.Do not be rude , always try to be helpful / caring to one another, stray animals. Its easier to hate now and harder to care , hate used to be rare but now you see it everywhere. Please be respectful to any software/work done by other people rather than making fun of them. Do not compare software (In a bad way). Im grateful to be even able to use neovim! But cant still be fully happy when I think there are people who barely get food to eat, starve for weeks, dont have access to proper education, comupters, basic health care facilities etc.
 
 The following links are some donation (gofundme) links for supporting needy people. Feel free to donate if you can :
 

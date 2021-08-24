@@ -2,6 +2,7 @@
 
 local M = {}
 
+-- non plugin ui configs, available without any plugins
 M.ui = {
    italic_comments = false,
 
@@ -11,32 +12,31 @@ M.ui = {
    -- theme toggler, toggle between two themes, see theme_toggleer mappings
    theme_toggler = {
       enabled = false,
-   fav_themes = {
-      "onedark",
-      "gruvchad",
-   },
+      fav_themes = {
+         "onedark",
+         "gruvchad",
+      },
    },
 
    -- Enable this only if your terminal has the colorscheme set which nvchad uses
    -- For Ex : if you have onedark set in nvchad , set onedark's bg color on your terminal
    transparency = false,
+}
 
-   -- plugin related ui options
-   plugin = {
+-- plugin related ui options
+M.ui.plugin = {
    -- statusline related options
    statusline = {
       -- these are filetypes, not pattern matched
       -- if a filetype is present in shown, it will always show the statusline, irrespective of filetypes in hidden
       hidden = {},
-      shown = {
-         -- "terminal"
-      },
-         -- default, round , slant , block , arrow
-         style = "default",
-      },
+   shown = {},
+      -- default, round , slant , block , arrow
+      style = "default",
    },
 }
 
+-- non plugin normal, available without any plugins
 M.options = {
    clipboard = "unnamedplus",
    cmdheight = 1,
@@ -52,6 +52,7 @@ M.options = {
    permanent_undo = true,
    shiftwidth = 2,
    smartindent = true,
+   tabstop = 8, -- Number of spaces that a <Tab> in the file counts for
    timeoutlen = 400,
    relativenumber = false,
    ruler = false,
@@ -59,13 +60,13 @@ M.options = {
    -- used for updater
    update_url = "https://github.com/NvChad/NvChad",
    update_branch = "main",
+}
 
-   -- these are plugin related options
-   plugin = {
-      autosave = false, -- autosave on changed text or insert mode leave
-      -- timeout to be used for using escape with a key combination, see mappings.plugin.better_escape
-      esc_insertmode_timeout = 300,
-   },
+-- these are plugin related options
+M.options.plugin = {
+   autosave = false, -- autosave on changed text or insert mode leave
+   -- timeout to be used for using escape with a key combination, see mappings.plugin.better_escape
+   esc_insertmode_timeout = 300,
 }
 
 -- enable and disable plugins (false for disable)
@@ -90,7 +91,8 @@ M.plugin_status = {
    vim_matchup = true, -- % magic, match it but improved
 }
 
--- make sure you dont use same keys twice
+-- mappings -- don't use a single keymap twice --
+-- non plugin mappings
 M.mappings = {
    -- close current focused buffer
    close_buffer = "<leader>x",
@@ -130,63 +132,63 @@ M.mappings = {
 
    -- update nvchad from nvchad, chadness 101
    update_nvchad = "<leader>uu",
+}
 
-   -- all plugins related mappings
-   -- to get short info about a plugin, see the respective string in plugin_status, if not present, then info here
-   plugin = {
-      bufferline = {
-         next_buffer = "<TAB>", -- next buffer
-         prev_buffer = "<S-Tab>", -- previous buffer
-      },
-      chadsheet = {
-         default_keys = "<leader>dk",
-         user_keys = "<leader>uk",
-      },
-      comment = {
-         toggle = "<C-_>", -- trigger comment on a single/selected lines/number prefix
-      },
-      dashboard = {
-         bookmarks = "<leader>bm",
-         new_file = "<leader>fn", -- basically create a new buffer
-         open = "<leader>db", -- open dashboard
-         session_load = "<C-s>l", -- load a saved session
-         session_save = "<C-s>s", -- save a session
-      },
-      -- note: this is an edditional mapping to escape, escape key will still work
-      better_escape = {
-         esc_insertmode = { "jk" }, -- multiple mappings allowed
+-- all plugins related mappings
+-- to get short info about a plugin, see the respective string in plugin_status, if not present, then info here
+M.mappings.plugin = {
+   bufferline = {
+      next_buffer = "<TAB>", -- next buffer
+      prev_buffer = "<S-Tab>", -- previous buffer
+   },
+   chadsheet = {
+      default_keys = "<leader>dk",
+      user_keys = "<leader>uk",
+   },
+   comment = {
+      toggle = "<C-_>", -- trigger comment on a single/selected lines/number prefix
+   },
+   dashboard = {
+      bookmarks = "<leader>bm",
+      new_file = "<leader>fn", -- basically create a new buffer
+      open = "<leader>db", -- open dashboard
+      session_load = "<C-s>l", -- load a saved session
+      session_save = "<C-s>s", -- save a session
+   },
+   -- note: this is an edditional mapping to escape, escape key will still work
+   better_escape = {
+      esc_insertmode = { "jk" }, -- multiple mappings allowed
    },
    nvimtree = {
-         toggle = "<leader>gg", -- file manager
-      findfile = "<leader>G"
+      toggle = "<leader>gg", -- file manager
+   findfile = "<leader>G"
    },
    neoformat = {
       format = "<leader>fm",
    },
    telescope = {
-         buffers = "<leader>fb",
-         find_files = "<leader>ff",
-         git_commits = "<leader>gc",
+      buffers = "<leader>fb",
+      find_files = "<leader>ff",
+      git_commits = "<leader>gc",
       git_status = "<leader>gt",
       help_tags = "<leader>fh",
-         live_grep = "<leader>fw",
+      live_grep = "<leader>fw",
       oldfiles = "<leader>fo",
       themes = "<leader>th",
    },
    telescope_media = {
       media_files = "<leader>fp",
    },
-      truezen = { -- distraction free modes mapping, hide statusline, tabline, line numbers
-         ataraxis_mode = "<leader>zz", -- center
-         focus_mode = "<leader>zf",
-         minimalistic_mode = "<leader>zm", -- as it is
+   truezen = { -- distraction free modes mapping, hide statusline, tabline, line numbers
+      ataraxis_mode = "<leader>zz", -- center
+      focus_mode = "<leader>zf",
+      minimalistic_mode = "<leader>zm", -- as it is
    },
-      vim_fugitive = {
-         diff_get_2 = "<leader>gh",
-         diff_get_3 = "<leader>gl",
-         git = "<leader>gs",
+   vim_fugitive = {
+      diff_get_2 = "<leader>gh",
+      diff_get_3 = "<leader>gl",
+      git = "<leader>gs",
       git_blame = "<leader>gb",
-   },
    },
 }
 
