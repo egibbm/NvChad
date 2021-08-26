@@ -123,11 +123,11 @@ M.mappings = {
       -- it does not close it, see pick_term mapping to see hidden terminals
       esc_hide_termmode = { "JK" }, -- multiple mappings allowed
       -- show hidden terminal buffers in a telescope picker
-      pick_term = "<leader>W",
+      pick_term = "<leader>tW",
       -- below three are for spawning terminals
-      new_horizontal = "<leader>h",
-      new_vertical = "<leader>v",
-      new_window = "<leader>w",
+      new_horizontal = "<leader>th",
+      new_vertical = "<leader>tv",
+      new_window = "<leader>tw",
    },
 
    -- update nvchad from nvchad, chadness 101
@@ -174,7 +174,7 @@ M.mappings.plugin = {
       help_tags = "<leader>fh",
       live_grep = "<leader>fw",
       oldfiles = "<leader>fo",
-      themes = "<leader>th",
+      themes = "<leader>ft",
    },
    telescope_media = {
       media_files = "<leader>fp",
