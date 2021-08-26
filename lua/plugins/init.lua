@@ -17,6 +17,10 @@ return packer.startup(function()
    }
 
    use {
+      "nvim-lua/plenary.nvim",
+   }
+
+   use {
       "wbthomason/packer.nvim",
       event = "VimEnter",
    }
@@ -38,8 +42,8 @@ return packer.startup(function()
    }
 
    use {
-      "glepnir/galaxyline.nvim",
-      disable = not plugin_status.galaxyline,
+      "famiu/feline.nvim",
+      disable = not plugin_status.feline,
       after = "nvim-web-devicons",
       config = function()
          require "plugins.configs.statusline"
@@ -49,40 +53,12 @@ return packer.startup(function()
    use {
       "akinsho/bufferline.nvim",
       disable = not plugin_status.bufferline,
-      after = "galaxyline.nvim",
+      after = "nvim-web-devicons",
       config = function()
          require "plugins.configs.bufferline"
       end,
       setup = function()
          require("core.mappings").bufferline()
-      end,
-   }
-
-   use {
-      "nvim-lua/plenary.nvim",
-   }
-
-   -- git stuff
-   use {
-      "lewis6991/gitsigns.nvim",
-      disable = not plugin_status.gitsigns,
-      cond = function()
-         return vim.fn.isdirectory ".git" == 1
-      end,
-      config = function()
-         require "plugins.configs.gitsigns"
-      end,
-   }
-
-   -- load autosave only if its globally enabled
-   use {
-      disable = not plugin_status.autosave,
-      "Pocco81/AutoSave.nvim",
-      config = function()
-         require "plugins.configs.autosave"
-      end,
-      cond = function()
-         return require("core.utils").load_config().options.plugin.autosave == true
       end,
    }
 
@@ -113,9 +89,38 @@ return packer.startup(function()
       end,
    }
 
+   -- git stuff
+   use {
+      "lewis6991/gitsigns.nvim",
+      disable = not plugin_status.gitsigns,
+      opt = true,
+      config = function()
+         require "plugins.configs.gitsigns"
+      end,
+      setup = function()
+         require("core.utils").packer_lazy_load "gitsigns.nvim"
+      end,
+   }
+
+   -- smooth scroll
+   use {
+      "karb94/neoscroll.nvim",
+      disable = not plugin_status.neoscroll,
+      opt = true,
+      config = function()
+         require("plugins.configs.others").neoscroll()
+      end,
+      setup = function()
+         require("core.utils").packer_lazy_load "neoscroll.nvim"
+      end,
+   }
+
    use {
       "kabouzeid/nvim-lspinstall",
-      event = "BufRead",
+      opt = true,
+      setup = function()
+         require("core.utils").packer_lazy_load "nvim-lspinstall"
+      end,
    }
 
    use {
@@ -136,9 +141,30 @@ return packer.startup(function()
    }
 
    use {
+      "andymass/vim-matchup",
+      disable = not plugin_status.vim_matchup,
+      opt = true,
+      setup = function()
+         require("core.utils").packer_lazy_load "vim-matchup"
+      end,
+   }
+
+   -- load autosave only if its globally enabled
+   use {
+      disable = not plugin_status.autosave,
+      "Pocco81/AutoSave.nvim",
+      config = function()
+         require "plugins.configs.autosave"
+      end,
+      cond = function()
+         return require("core.utils").load_config().options.plugin.autosave == true
+      end,
+   }
+
+   use {
       "onsails/lspkind-nvim",
       disable = not plugin_status.lspkind,
-      event = "BufEnter",
+      event = "InsertEnter",
       config = function()
          require("plugins.configs.others").lspkind()
       end,
@@ -189,22 +215,6 @@ return packer.startup(function()
       after = "nvim-compe",
       config = function()
          require "plugins.configs.autopairs"
-      end,
-   }
-
-   use {
-      "andymass/vim-matchup",
-      disable = not plugin_status.vim_matchup,
-      event = "CursorMoved",
-   }
-
-   -- smooth scroll
-   use {
-      "karb94/neoscroll.nvim",
-      disable = not plugin_status.neoscroll,
-      event = "WinScrolled",
-      config = function()
-         require("plugins.configs.others").neoscroll()
       end,
    }
 
