@@ -8,7 +8,7 @@ telescope.setup {
       vimgrep_arguments = {
          "ag",
          "--vimgrep",
-         "--smart-case"
+         "--smart-case",
       },
       prompt_prefix = "   ",
       selection_caret = "  ",

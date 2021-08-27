@@ -356,7 +356,7 @@ return packer.startup(function()
       event = "BufRead",
       config = function()
          require("plugins.configs.bqf-nvim").config()
-      end
+      end,
    }
 
    use "junegunn/gv.vim"
@@ -368,37 +368,37 @@ return packer.startup(function()
             "vim-test/vim-test",
             setup = function()
                require("core.mappings").vim_test()
-            end
-         }
-      }
+            end,
+         },
+      },
    }
 
    -- use "majutsushi/tagbar"
    -- use "godlygeek/tabular"
    -- use "alvan/vim-closetag" -- for html autoclosing tag
 
-   use {"slim-template/vim-slim", ft='slim'}
-   use {'tpope/vim-dispatch', opt = true, cmd = {'Dispatch', 'Make', 'Focus', 'Start'}}
+   use { "slim-template/vim-slim", ft = "slim" }
+   use { "tpope/vim-dispatch", opt = true, cmd = { "Dispatch", "Make", "Focus", "Start" } }
    use {
       "vim-ruby/vim-ruby",
       opt = true,
-      ft = 'ruby',
+      ft = "ruby",
       requires = {
          "thoughtbot/vim-rspec",
          "tpope/vim-dispatch",
          "tpope/vim-rake",
-         "vim-scripts/ruby-matchit"
-      }
+         "vim-scripts/ruby-matchit",
+      },
    }
 
    use {
       "tpope/vim-rails",
       opt = true,
-      ft = 'ruby',
+      ft = "ruby",
       requires = {
          "vim-ruby/vim-ruby",
          "tpope/vim-dispatch",
-         "tpope/vim-abolish"
+         "tpope/vim-abolish",
       },
       config = function()
          require "plugins.configs.rails"
@@ -408,8 +408,8 @@ return packer.startup(function()
       end,
    }
 
-   use {"mfukar/robotframework-vim", ft = 'robot'}
-   use {"mMontu/vim-RobotUtils", ft = 'robot'}
+   use { "mfukar/robotframework-vim", ft = "robot" }
+   use { "mMontu/vim-RobotUtils", ft = "robot" }
 
    -- use "mattn/emmet-vim"
    -- use "ap/vim-css-color"           <-- supported by treesitter(?)
@@ -433,9 +433,9 @@ return packer.startup(function()
    -- use "easymotion/vim-easymotion"
 
    use {
-     "cappyzawa/trim.nvim",
-     setup = function()
-       disable = { "markdown" }
-     end
+      "cappyzawa/trim.nvim",
+      setup = function()
+         disable = { "markdown" }
+      end,
    }
 end)

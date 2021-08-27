@@ -13,7 +13,7 @@ ts_config.setup {
       "json",
       "ruby",
       "yaml",
-      "python"
+      "python",
       -- "rust",
       -- "go"
    },

@@ -8,4 +8,3 @@ vim.g.surround_61 = "<%= \r %>"
 
 -- require thoughtbot/vim-rspec, tpope/vim-dispatch
 vim.g.rspec_command = "Dispatch rspec --format=progress --no-profile {spec}"
-

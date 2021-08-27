@@ -31,7 +31,7 @@ M.ui.plugin = {
       -- these are filetypes, not pattern matched
       -- if a filetype is present in shown, it will always show the statusline, irrespective of filetypes in hidden
       hidden = {},
-   shown = {},
+      shown = {},
       -- default, round , slant , block , arrow
       style = "default",
    },
@@ -164,7 +164,7 @@ M.mappings.plugin = {
    },
    nvimtree = {
       toggle = "<leader>gg", -- file manager
-      findfile = "<leader>G"
+      findfile = "<leader>G",
    },
    neoformat = {
       format = "<C-A-l>",
