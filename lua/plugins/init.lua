@@ -80,7 +80,6 @@ return packer.startup(function()
       end,
    }
 
-   -- lsp stuff
    use {
       "nvim-treesitter/nvim-treesitter",
       event = "BufRead",
@@ -115,11 +114,16 @@ return packer.startup(function()
       end,
    }
 
+   -- lsp stuff
    use {
       "kabouzeid/nvim-lspinstall",
       opt = true,
       setup = function()
          require("core.utils").packer_lazy_load "nvim-lspinstall"
+         -- reload the current file so lsp actually starts for it
+         vim.defer_fn(function()
+            vim.cmd "silent! e %"
+         end, 0)
       end,
    }
 
@@ -154,19 +158,10 @@ return packer.startup(function()
       disable = not plugin_status.autosave,
       "Pocco81/AutoSave.nvim",
       config = function()
-         require "plugins.configs.autosave"
+         require("plugins.configs.others").autosave()
       end,
       cond = function()
          return require("core.utils").load_config().options.plugin.autosave == true
-      end,
-   }
-
-   use {
-      "onsails/lspkind-nvim",
-      disable = not plugin_status.lspkind,
-      event = "InsertEnter",
-      config = function()
-         require("plugins.configs.others").lspkind()
       end,
    }
 
@@ -182,39 +177,56 @@ return packer.startup(function()
       end,
    }
 
-   -- load compe in insert mode only
+   -- load luasnips + cmp related in insert mode only
+
    use {
-      "hrsh7th/nvim-compe",
+      "hrsh7th/nvim-cmp",
       event = "InsertEnter",
       config = function()
-         require "plugins.configs.compe"
+         require "plugins.configs.cmp"
       end,
-      setup = function()
-         require("core.mappings").compe()
+   }
+
+   use {
+      "L3MON4D3/LuaSnip",
+      wants = "friendly-snippets",
+      after = "nvim-cmp",
+      config = function()
+         require "plugins.configs.luasnip"
       end,
-      wants = "LuaSnip",
-      requires = {
-         {
-            "L3MON4D3/LuaSnip",
-            wants = "friendly-snippets",
-            event = "InsertCharPre",
-            config = function()
-               require "plugins.configs.luasnip"
-            end,
-         },
-         {
-            "rafamadriz/friendly-snippets",
-            event = "InsertCharPre",
-         },
-      },
+   }
+
+   use {
+      "saadparwaiz1/cmp_luasnip",
+      after = "LuaSnip",
+   }
+
+   use {
+      "hrsh7th/cmp-nvim-lua",
+      after = "cmp_luasnip",
+   }
+
+   use {
+      "hrsh7th/cmp-nvim-lsp",
+      after = "cmp-nvim-lua",
+   }
+
+   use {
+      "hrsh7th/cmp-buffer",
+      after = "cmp-nvim-lsp",
+   }
+
+   use {
+      "rafamadriz/friendly-snippets",
+      after = "cmp-buffer",
    }
 
    -- misc plugins
    use {
       "windwp/nvim-autopairs",
-      after = "nvim-compe",
+      after = "nvim-cmp",
       config = function()
-         require "plugins.configs.autopairs"
+         require("plugins.configs.others").autopairs()
       end,
    }
 

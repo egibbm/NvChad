@@ -19,10 +19,11 @@ M.misc = function()
       -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
       -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
       -- empty mode is same as using :map
-      map("", "j", 'v:count ? "j" : "gj"', { expr = true })
-      map("", "k", 'v:count ? "k" : "gk"', { expr = true })
-      map("", "<Down>", 'v:count ? "j" : "gj"', { expr = true })
-      map("", "<Up>", 'v:count ? "k" : "gk"', { expr = true })
+      -- also don't use g[j|k] when in operator pending mode, so it doesn't alter d, y or c behaviour
+      map("", "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true })
+      map("", "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
+      map("", "<Down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true })
+      map("", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
 
       -- use ESC to turn off search highlighting
       map("n", "<leader><space>", ":noh <CR>", opt)
@@ -307,14 +308,6 @@ M.rails = function()
    map("", "<Leader>oj", ":Ejavascript<Space>", opt)
    map("", "<Leader>os", ":Estylesheet<Space>", opt)
    map("", "<Leader>oi", ":Eintegrationtest<Space>", opt)
-end
-
-M.compe = function()
-   map("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-   map("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-   map("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-   map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-   map("i", "<CR>", "v:lua.completions()", {expr = true})
 end
 
 M.vim_test = function()
