@@ -89,7 +89,6 @@ M.plugin_status = {
    esc_insertmode = false, -- escape from insert mode using custom keys
    feline = true, -- statusline
    gitsigns = true, -- gitsigns in statusline
-   lspkind = true, -- lsp enhancements
    lspsignature = true, -- lsp enhancements
    neoformat = true, -- universal formatter
    neoscroll = false, -- smooth scroll
@@ -148,6 +147,11 @@ M.mappings.plugin = {
    bufferline = {
       next_buffer = "<TAB>", -- next buffer
       prev_buffer = "<S-Tab>", -- previous buffer
+      --better window movement
+      moveLeft = "<C-h>",
+      moveRight = "<C-l>",
+      moveUp = "<C-k>",
+      moveDown = "<C-j>",
    },
    chadsheet = {
       default_keys = "<leader>dk",
