@@ -220,4 +220,11 @@ M.custom.mappings = {
    -- },
 }
 
+M.plugins = {
+   lspconfig = {
+      -- servers = {"html", "cssls"}
+      servers = {},
+   },
+}
+
 return M
