@@ -26,89 +26,89 @@ M.misc = function()
       map("", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
 
       -- use ESC to turn off search highlighting
-      map("n", "<leader><space>", ":noh <CR>", opt)
+      map("n", "<leader><space>", ":noh <CR>")
    end
 
    local function vidio()
       -- easy wrap toggling
-      map("n", "<Leader>w", ":set wrap!<cr>", opt)
-      map("n", "<Leader>W", ":set nowrap<cr>", opt)
+      map("n", "<Leader>w", ":set wrap!<cr>")
+      map("n", "<Leader>W", ":set nowrap<cr>")
 
       -- close all other windows (in the current tab)
-      map("n", "gW", ":only<cr>", opt)
+      map("n", "gW", ":only<cr>")
 
       -- delete all buffers
-      map("", "<Leader>d", ":bufdo bd<cr>", opt)
+      map("", "<Leader>d", ":bufdo bd<cr>")
 
       -- insert blank lines without going into insert mode
-      map("n", "go", "o<esc>", opt)
-      map("n", "gO", "O<esc>", opt)
+      map("n", "go", "o<esc>")
+      map("n", "gO", "O<esc>")
 
       -- mapping the jumping between splits. Hold control while using vim nav.
-      map("n", "<C-J>", "<C-W>j", opt)
-      map("n", "<C-K>", "<C-W>k", opt)
-      map("n", "<C-H>", "<C-W>h", opt)
-      map("n", "<C-L>", "<C-W>l", opt)
+      map("n", "<C-J>", "<C-W>j")
+      map("n", "<C-K>", "<C-W>k")
+      map("n", "<C-H>", "<C-W>h")
+      map("n", "<C-L>", "<C-W>l")
 
       -- Yank from the cursor to the end of the line, to be consistent with C and D.
-      map("n", "Y", "y$", opt)
+      map("n", "Y", "y$")
 
       -- select the lines which were just pasted
-      map("n", "vv", "`[V`]", opt)
+      map("n", "vv", "`[V`]")
 
       -- clean up trailing whitespace
-      map("", "<Leader>c", ":lua require('trim.trimmer').trim()<cr>", opt)
+      map("", "<Leader>c", ":lua require('trim.trimmer').trim()<cr>")
 
       -- compress excess whitespace on current line
-      map("", "<Leader>e", ":s/\\v(\\S+)\\s+/\\1 /<cr>:nohl<cr>", opt)
+      map("", "<Leader>e", ":s/\\v(\\S+)\\s+/\\1 /<cr>:nohl<cr>")
 
       -- buffer resizing mappings (shift + arrow key)
-      map("n", "<S-Up>", "<c-w>+", opt)
-      map("n", "<S-Down>", "<c-w>-", opt)
-      map("n", "<S-Left>", "<c-w><<c-w><<c-w><", opt)
-      map("n", "<S-Right>", "<c-w>><c-w>><c-w>>", opt)
+      map("n", "<S-Up>", "<c-w>+")
+      map("n", "<S-Down>", "<c-w>-")
+      map("n", "<S-Left>", "<c-w><<c-w><<c-w><")
+      map("n", "<S-Right>", "<c-w>><c-w>><c-w>>")
 
       -- reindent the entire file
-      map("n", "<Leader>I", "gg=G``<cr>", opt)
+      map("n", "<Leader>I", "gg=G``<cr>")
 
       -- insert the path of currently edited file into a command
       -- Command mode: Ctrl-P
-      map("c", "<C-S-P>", '<C-R>=expand("%:p:h") . "/" <cr>', opt)
+      map("c", "<C-S-P>", '<C-R>=expand("%:p:h") . "/" <cr>')
 
       -- Tricks
-      map("", "n", "nzz", opt)
-      map("", "N", "Nzz", opt)
-      map("", "<C-o>", "<C-o>zz", opt)
-      map("", "<C-i>", "<C-i>zz", opt)
+      map("", "n", "nzz")
+      map("", "N", "Nzz")
+      map("", "<C-o>", "<C-o>zz")
+      map("", "<C-i>", "<C-i>zz")
 
       -- PHP
-      -- map("i", "<C-l>", "->", opt)
-      -- map("i", "<C-k>", "=>", opt)
+      -- map("i", "<C-l>", "->")
+      -- map("i", "<C-k>", "=>")
 
       -- CTRL-X and SHIFT-Del are Cut
-      map("v", "<C-X>", '"+x', opt)
-      map("v", "<S-Del>", '"+x', opt)
+      map("v", "<C-X>", '"+x')
+      map("v", "<S-Del>", '"+x')
 
       -- CTRL-C and CTRL-Insert are Copy
-      map("v", "<C-C>", '"+y', opt)
-      map("v", "<C-Insert>", '"+y', opt)
+      map("v", "<C-C>", '"+y')
+      map("v", "<C-Insert>", '"+y')
 
       -- CTRL-V and SHIFT-Insert are Paste
-      map("",  "<S-Insert>", '"+gP', opt)
-      map("i", "<S-Insert>", '<Esc>"+gP', opt)
-      map("c", "<S-Insert>", "<C-R>+", opt)
+      map("",  "<S-Insert>", '"+gP')
+      map("i", "<S-Insert>", '<Esc>"+gP')
+      map("c", "<S-Insert>", "<C-R>+")
 
       -- Navigation for tab
-      map("", "<Leader>1", "1gt", opt)
-      map("", "<Leader>2", "2gt", opt)
-      map("", "<Leader>3", "3gt", opt)
-      map("", "<Leader>4", "4gt", opt)
-      map("", "<Leader>5", "5gt", opt)
-      map("", "<Leader>6", "6gt", opt)
-      map("", "<Leader>7", "7gt", opt)
-      map("", "<Leader>8", "8gt", opt)
-      map("", "<Leader>9", "9gt", opt)
-      map("", "<Leader>0", ":tablast<cr>", opt)
+      map("", "<Leader>1", "1gt")
+      map("", "<Leader>2", "2gt")
+      map("", "<Leader>3", "3gt")
+      map("", "<Leader>4", "4gt")
+      map("", "<Leader>5", "5gt")
+      map("", "<Leader>6", "6gt")
+      map("", "<Leader>7", "7gt")
+      map("", "<Leader>8", "8gt")
+      map("", "<Leader>9", "9gt")
+      map("", "<Leader>0", ":tablast<cr>")
    end
 
    local function optional_mappings()
@@ -290,24 +290,24 @@ end
 
 M.rails = function()
    -- shortcuts for frequenly used files
-   map("n", "gs", ":e db/schema.rb<cr>", opt)
-   map("n", "gr", ":e config/routes.rb<cr>", opt)
-   map("n", "gm", ":e Gemfile<cr>", opt)
+   map("n", "gs", ":e db/schema.rb<cr>")
+   map("n", "gr", ":e config/routes.rb<cr>")
+   map("n", "gm", ":e Gemfile<cr>")
 
    -- require thoughtbot/vim-rspec, tpope/vim-dispatch
-   map("n", "<Leader>rc", ":wa<CR> :call RunCurrentSpecFile()<CR>", opt)
-   map("n", "<Leader>rn", ":wa<CR> :call RunNearestSpec()<CR>", opt)
-   map("n", "<Leader>rl", ":wa<CR> :call RunLastSpec()<CR>", opt)
-   map("n", "<Leader>ra", ":wa<CR> :call RunAllSpecs()<CR>", opt)
+   map("n", "<Leader>rc", ":wa<CR> :call RunCurrentSpecFile()<CR>")
+   map("n", "<Leader>rn", ":wa<CR> :call RunNearestSpec()<CR>")
+   map("n", "<Leader>rl", ":wa<CR> :call RunLastSpec()<CR>")
+   map("n", "<Leader>ra", ":wa<CR> :call RunAllSpecs()<CR>")
 
    -- require tpope/vim-rails
-   map("", "<Leader>oc", ":Econtroller<Space>", opt)
-   map("", "<Leader>ov", ":Eview<Space>", opt)
-   map("", "<Leader>om", ":Emodel<Space>", opt)
-   map("", "<Leader>oh", ":Ehelper<Space>", opt)
-   map("", "<Leader>oj", ":Ejavascript<Space>", opt)
-   map("", "<Leader>os", ":Estylesheet<Space>", opt)
-   map("", "<Leader>oi", ":Eintegrationtest<Space>", opt)
+   map("", "<Leader>oc", ":Econtroller<Space>")
+   map("", "<Leader>ov", ":Eview<Space>")
+   map("", "<Leader>om", ":Emodel<Space>")
+   map("", "<Leader>oh", ":Ehelper<Space>")
+   map("", "<Leader>oj", ":Ejavascript<Space>")
+   map("", "<Leader>os", ":Estylesheet<Space>")
+   map("", "<Leader>oi", ":Eintegrationtest<Space>")
 end
 
 M.vim_test = function()
