@@ -30,12 +30,7 @@ M.ui.plugin = {
    statusline = {
       -- these are filetypes, not pattern matched
       -- if a filetype is present in shown, it will always show the statusline, irrespective of filetypes in hidden
-      hidden = {
-         "help",
-         "dashboard",
-         "NvimTree",
-         "terminal",
-      },
+      hidden = {},
       shown = {},
       -- default, round , slant , block , arrow
       style = "default",
