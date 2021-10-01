@@ -47,7 +47,7 @@ M.mappings = {
       new_horizontal = "<leader>th",
       new_vertical = "<leader>tv",
       new_window = "<leader>tw",
-   }
+   },
 }
 
 M.mappings.plugins = {
@@ -65,7 +65,7 @@ M.mappings.plugins = {
       find_files = "<C-p>",
       git_commits = "<leader>gc",
       themes = "<leader>ft", -- NvChad theme picker
-   }
+   },
 }
 
 return M

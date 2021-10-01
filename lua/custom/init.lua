@@ -86,7 +86,7 @@ hooks.add("setup_mappings", function(map)
    map("v", "<C-Insert>", '"+y', opt)
 
    -- CTRL-V and SHIFT-Insert are Paste
-   map("",  "<S-Insert>", '"+gP', opt)
+   map("", "<S-Insert>", '"+gP', opt)
    map("i", "<S-Insert>", '<Esc>"+gP', opt)
    map("c", "<S-Insert>", "<C-R>+", opt)
 
@@ -120,7 +120,7 @@ hooks.add("install_plugins", function(use)
          map("n", "<leader>gb", ":Git blame <CR>")
          map("n", "<leader>gh", ":diffget //2 <CR>")
          map("n", "<leader>gl", ":diffget //3 <CR>")
-      end
+      end,
    }
 
    use {
@@ -142,7 +142,7 @@ hooks.add("install_plugins", function(use)
                stoggleup = "",
             },
          }
-      end
+      end,
    }
 
    use {
@@ -177,12 +177,12 @@ hooks.add("install_plugins", function(use)
 
    use {
       "mfukar/robotframework-vim",
-      ft = "robot" 
+      ft = "robot",
    }
 
-   use { 
-      "mMontu/vim-RobotUtils", 
-      ft = "robot" 
+   use {
+      "mMontu/vim-RobotUtils",
+      ft = "robot",
    }
 end)
 
