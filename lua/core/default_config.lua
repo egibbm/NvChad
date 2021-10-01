@@ -2,7 +2,7 @@
 -- use custom/chadrc.lua instead
 
 local M = {}
-M.options, M.ui, M.mappings, M.plugin = {}, {}, {}, {}
+M.options, M.ui, M.mappings, M.plugins = {}, {}, {}, {}
 
 -- non plugin normal, available without any plugins
 M.options = {
@@ -57,7 +57,7 @@ M.ui = {
 -- these are plugin related options
 M.plugins = {
    -- enable and disable plugins (false for disable)
-   plugin_status = {
+      status = {
       autosave = false, -- to autosave files
       blankline = true, -- show code scope with symbols
       bufferline = true, -- list open buffers up the top, easy switching too
@@ -68,19 +68,21 @@ M.plugins = {
       feline = true, -- statusline
       gitsigns = true, -- gitsigns in statusline
       lspsignature = true, -- lsp enhancements
-      neoformat = true, -- universal code formatter
       neoscroll = false, -- smooth scroll
       telescope_media = false, -- media previews within telescope finders
       truezen = false, -- distraction free & minimalist UI mode
-      vim_fugitive = false, -- git integration & tooling
       vim_matchup = true, -- % operator enhancements
+      cmp = true,
    },
    options = {
       lspconfig = {
-         servers = {}, -- eg: "html"
+         setup_lspconf = "", -- path of file containing setups of different lsps
       },
       nvimtree = {
          enable_git = 0,
+      },
+      luasnip = {
+         snippet_path = {},
       },
       statusline = { -- statusline related options
          -- these are filetypes, not pattern matched
@@ -96,7 +98,7 @@ M.plugins = {
          style = "default",
       },
       autosave = false, -- autosave on changed text or insert mode leave
-      -- timeout to be used for using escape with a key combination, see mappings.plugin.better_escape
+      -- timeout to be used for using escape with a key combination, see mappings.plugins.better_escape
       esc_insertmode_timeout = 300,
    },
    default_plugin_config_replace = {},
@@ -176,10 +178,6 @@ M.mappings.plugins = {
       toggle = "<C-n>",
       focus = "<leader>e",
    },
-   -- universal code formatter
-   neoformat = {
-      format = "<leader>fm",
-   },
    -- multitool for finding & picking things
    telescope = {
       buffers = "<leader>fb",
@@ -201,13 +199,6 @@ M.mappings.plugins = {
       ataraxis_mode = "<leader>zz", -- center
       focus_mode = "<leader>zf",
       minimalistic_mode = "<leader>zm", -- as it is
-   },
-   -- git integration & tooling
-   vim_fugitive = {
-      diff_get_2 = "<leader>gh",
-      diff_get_3 = "<leader>gl",
-      git = "<leader>gs",
-      git_blame = "<leader>gb",
    },
 }
 
