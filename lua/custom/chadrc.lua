@@ -32,8 +32,8 @@ M.plugins = {
       --    setup_lspconf = "",
       --   },
       nvimtree = {
-        enable_git = 1,
-      }
+         enable_git = 1,
+      },
    },
    -- To change the Packer `config` of a plugin that comes with NvChad,
    -- add a table entry below matching the plugin github name
