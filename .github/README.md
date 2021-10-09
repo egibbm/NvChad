@@ -9,7 +9,7 @@
   <span> • </span>
 	<a href="https://github.com/siduck76/NvChad#gift_heart-support">Support</a>
   <span> • </span>
-      	<a href="https://github.com/siduck76/NvChad/wiki/Chad-user-configs">Extras</a>
+        <a href="https://nvchad.github.io/Extras">Extras</a>
   <p></p>
 </div>
 
@@ -27,7 +27,7 @@
             src="https://img.shields.io/github/repo-size/siduck76/NvChad?style=flat-square&label=Repo"
             alt="GitHub repository size"
     /></a>
-      <a href="https://github.com/siduck76/NvChad/blob/main/LICENSE"
+<a href="https://github.com/siduck76/NvChad/blob/main/LICENSE"
         ><img
             src="https://img.shields.io/github/license/siduck76/NvChad?style=flat-square&logo=GNU&label=License"
             alt="License"
@@ -116,10 +116,7 @@ Without/with Treesitter:
 ## Features
 
 - Many beautiful themes to choose from.
-- Distraction free modes.
 - Fast plugin loading.
-- Smooth scrolling.
-- Autosaving.
 - File navigation with [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua).
 - Managing tabs, buffers with [bufferline.nvim](https://github.com/akinsho/bufferline.nvim).
 - Beautiful and configurable icons with [nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons).
@@ -130,7 +127,6 @@ Without/with Treesitter:
 - File searching, previewing image and text files and more with [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim).
 - Syntax highlighting with [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter).
 - Autoclosing braces and html tags with [nvim-autopairs](https://github.com/windwp/nvim-autopairs).
-- Formatting code with [neoformat](https://github.com/sbdchd/neoformat).
 - Indentlines with [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim).
 - Useful snippets with [LuaSnip](https://github.com/L3MON4D3/LuaSnip).
 
@@ -181,3 +177,4 @@ I would happily accept donations but would feel awful since I'm not the only one
 - https://www.gofundme.com/f/Burundi-Nutrition
 - https://charity.gofundme.com/o/en/campaign/feedingyemen
 - https://www.gofundme.com/f/6p8ea-give-ghanaian-orphans-the-gift-of-a-ride-to-school
+- https://www.isupportmyanmar.com
