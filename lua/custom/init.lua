@@ -109,15 +109,6 @@ end)
 -- examples below:
 
 hooks.add("install_plugins", function(use)
-   -- load it after nvim-lspconfig , since we'll use some lspconfig stuff in null-ls config!
-   use {
-      "jose-elias-alvarez/null-ls.nvim",
-      after = "nvim-lspconfig",
-      config = function()
-         require("custom.plugin_confs.null-ls").setup()
-      end,
-   }
-
    use {
       "tpope/vim-fugitive",
       event = "BufRead",
