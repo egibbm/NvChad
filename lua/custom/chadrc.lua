@@ -27,10 +27,10 @@ M.plugins = {
       truezen = true, -- distraction free & minimalist UI mode
    },
    options = {
-      --   lspconfig = {
+      lspconfig = {
       --    path of file containing setups of different lsps (ex : "custom.plugins.lspconfig"), read the docs for more info
-      --    setup_lspconf = "",
-      --   },
+         setup_lspconf = "custom.plugin_confs.lspconfig",
+     },
       nvimtree = {
          enable_git = 1,
       },
