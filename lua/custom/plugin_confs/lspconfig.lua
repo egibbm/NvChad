@@ -21,7 +21,10 @@ M.setup_lsp = function(attach, capabilities)
 
    lspconfig["sqlls"].setup {
       cmd = {
-         "sql-language-server", "up", "--method", "stdio"
+         "sql-language-server",
+         "up",
+         "--method",
+         "stdio",
       },
       on_attach = attach,
       capabilities = capabilities,
@@ -32,7 +35,9 @@ M.setup_lsp = function(attach, capabilities)
 
    lspconfig["groovyls"].setup {
       cmd = {
-         "java", "-jar", "/home/amohammad/Workspace/groovy-language-server/build/libs/groovy-language-server-all.jar"
+         "java",
+         "-jar",
+         "/home/amohammad/Workspace/groovy-language-server/build/libs/groovy-language-server-all.jar",
       },
       on_attach = attach,
       capabilities = capabilities,
@@ -40,7 +45,6 @@ M.setup_lsp = function(attach, capabilities)
          debounce_text_changes = 150,
       },
    }
-
 end
 
 -- typescript
