@@ -6,7 +6,7 @@ M.setup_lsp = function(attach, capabilities)
    -- lspservers with default config
 
    -- filetypes = { "html", "json", "markdown", "scss", "css", "javascript", "javascriptreact" },
-   local servers = { "html", "cssls", "pyright" }
+   local servers = { "html", "cssls", "pyright", "solargraph" }
 
    for _, lsp in ipairs(servers) do
       lspconfig[lsp].setup {
@@ -20,7 +20,7 @@ M.setup_lsp = function(attach, capabilities)
    end
 end
 
--- typescript 
+-- typescript
 
 -- lspconfig.tsserver.setup {
 --    cmd = { "typescript-language-server", "--stdio" },

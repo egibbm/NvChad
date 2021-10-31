@@ -18,17 +18,22 @@ local sources = {
 
    -- Lua
    b.formatting.stylua,
-   b.diagnostics.luacheck.with { extra_args = { "--global vim" } },
+   --b.diagnostics.luacheck.with { extra_args = { "--globals", "vim" } },
+   b.diagnostics.luacheck,
 
    -- Shell
    b.formatting.shfmt,
    b.diagnostics.shellcheck.with { diagnostics_format = "#{m} [#{c}]" },
+
+   -- ruby
+   b.formatting.rubocop
 }
 
 local M = {}
 M.setup = function(on_attach)
    null_ls.config {
       sources = sources,
+      debug = true,
    }
    require("lspconfig")["null-ls"].setup { on_attach = on_attach }
 end
