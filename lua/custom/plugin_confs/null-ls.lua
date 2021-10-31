@@ -8,6 +8,8 @@ local b = null_ls.builtins
 
 local sources = {
 
+   b.code_actions.gitsigns,
+
    -- JS html css stuff
    b.formatting.prettierd.with {
       filetypes = { "html", "json", "yaml", "markdown", "scss", "css", "javascript", "javascriptreact" },
