@@ -26,7 +26,7 @@ local sources = {
    b.diagnostics.shellcheck.with { diagnostics_format = "#{m} [#{c}]" },
 
    -- ruby
-   b.formatting.rubocop
+   b.formatting.rubocop,
 }
 
 local M = {}
