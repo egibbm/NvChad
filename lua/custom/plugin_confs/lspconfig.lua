@@ -19,19 +19,19 @@ M.setup_lsp = function(attach, capabilities)
       }
    end
 
-   lspconfig["sqlls"].setup {
-      cmd = {
-         "sql-language-server",
-         "up",
-         "--method",
-         "stdio",
-      },
-      on_attach = attach,
-      capabilities = capabilities,
-      flags = {
-         debounce_text_changes = 150,
-      },
-   }
+   -- lspconfig["sqlls"].setup {
+   --    cmd = {
+   --       "sql-language-server",
+   --       "up",
+   --       "--method",
+   --       "stdio",
+   --    },
+   --    on_attach = attach,
+   --    capabilities = capabilities,
+   --    flags = {
+   --       debounce_text_changes = 150,
+   --    },
+   -- }
 
    lspconfig["groovyls"].setup {
       cmd = {
