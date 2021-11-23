@@ -6,7 +6,7 @@ M.setup_lsp = function(attach, capabilities)
    -- lspservers with default config
 
    -- filetypes = { "html", "json", "markdown", "scss", "css", "javascript", "javascriptreact" },
-   local servers = { "html", "cssls", "pyright", "solargraph", "bashls", "ansiblels" }
+   local servers = { "html", "cssls", "pyright", "solargraph", "bashls", "ansiblels", "robotframework_ls" }
 
    for _, lsp in ipairs(servers) do
       lspconfig[lsp].setup {
