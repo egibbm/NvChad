@@ -72,6 +72,7 @@ hooks.add("setup_mappings", function(map)
    map("", "N", "Nzz")
    map("", "<C-o>", "<C-o>zz")
    map("", "<C-i>", "<C-i>zz")
+   map("", "<space>", ":syn sync fromstart<cr>")
 
    -- PHP
    -- map("i", "<C-l>", "->", opt)
