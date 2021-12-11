@@ -199,3 +199,4 @@ end)
 -- then source it with
 
 -- require "custom.plugins.mkdir"
+require "custom.autocmds"
