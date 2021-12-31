@@ -36,7 +36,7 @@ return packer.startup(function()
    }
 
    use {
-      "famiu/feline.nvim",
+      "feline-nvim/feline.nvim",
       disable = not plugin_settings.status.feline,
       after = "nvim-web-devicons",
       config = override_req("feline", "plugins.configs.statusline"),
@@ -116,7 +116,7 @@ return packer.startup(function()
 
    use {
       "max397574/better-escape.nvim",
-      disable = not plugin_settings.status.esc_insertmode,
+      disable = not plugin_settings.status.better_escape,
       event = "InsertEnter",
       config = override_req("better_escape", "(plugins.configs.others).better_escape()"),
    }
@@ -191,11 +191,12 @@ return packer.startup(function()
    }
 
    use {
-      "terrortylor/nvim-comment",
+      "numToStr/Comment.nvim",
       disable = not plugin_settings.status.comment,
-      cmd = "CommentToggle",
+      module = "Comment",
       config = override_req("nvim_comment", "(plugins.configs.others).comment()"),
       setup = function()
+         require("core.utils").packer_lazy_load "Comment.nvim"
          require("core.mappings").comment()
       end,
    }
@@ -204,7 +205,9 @@ return packer.startup(function()
    use {
       "kyazdani42/nvim-tree.lua",
       disable = not plugin_settings.status.nvimtree,
-      cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+      -- only set "after" if lazy load is disabled and vice versa for "cmd"
+      after = not plugin_settings.options.nvimtree.lazy_load and "nvim-web-devicons",
+      cmd = plugin_settings.options.nvimtree.lazy_load and { "NvimTreeToggle", "NvimTreeFocus" },
       config = override_req("nvim_tree", "plugins.configs.nvimtree"),
       setup = function()
          require("core.mappings").nvimtree()
