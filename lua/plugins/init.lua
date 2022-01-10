@@ -1,4 +1,5 @@
-local present, packer = pcall(require, "plugins.packerInit")
+local plugin_settings = require("core.utils").load_config().plugins
+local present, packer = pcall(require, plugin_settings.options.packer.init_file)
 
 if not present then
    return false
@@ -7,7 +8,6 @@ end
 local use = packer.use
 
 return packer.startup(function()
-   local plugin_settings = require("core.utils").load_config().plugins
    local override_req = require("core.utils").override_req
 
    -- this is arranged on the basis of when a plugin starts
@@ -196,7 +196,6 @@ return packer.startup(function()
       module = "Comment",
       config = override_req("nvim_comment", "(plugins.configs.others).comment()"),
       setup = function()
-         require("core.utils").packer_lazy_load "Comment.nvim"
          require("core.mappings").comment()
       end,
    }
@@ -216,26 +215,12 @@ return packer.startup(function()
 
    use {
       "nvim-telescope/telescope.nvim",
-      module = "telescope",
       cmd = "Telescope",
-      requires = {
-         {
-            "nvim-telescope/telescope-fzf-native.nvim",
-            run = "make",
-         },
-         {
-            "nvim-telescope/telescope-media-files.nvim",
-            disable = not plugin_settings.status.telescope_media,
-            setup = function()
-               require("core.mappings").telescope_media()
-            end,
-         },
-      },
       config = override_req("telescope", "plugins.configs.telescope"),
       setup = function()
          require("core.mappings").telescope()
       end,
    }
    -- load user defined plugins
-   require("core.hooks").run("install_plugins", use)
+   require("core.customPlugins").run(use)
 end)
