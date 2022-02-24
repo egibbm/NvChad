@@ -19,7 +19,9 @@ M.ui = {
 }
 
 -- NvChad included plugin options & overrides
+local userPlugins = require "custom.plugins"
 M.plugins = {
+   install = userPlugins,
    status = {
       esc_insertmode = false, -- map to <ESC> with no lag
       telescope_media = true, -- media previews within telescope finders
