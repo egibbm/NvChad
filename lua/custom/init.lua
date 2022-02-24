@@ -172,6 +172,13 @@ customPlugins.add(function(use)
       "mMontu/vim-RobotUtils",
       ft = "robot",
    }
+
+   use {
+     'glacambre/firenvim',
+     run = function()
+       vim.fn['firenvim#install'](0)
+     end
+   }
 end)
 
 -- NOTE: we heavily suggest using Packer's lazy loading (with the 'event','cmd' fields)
