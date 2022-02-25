@@ -89,5 +89,22 @@ local map = require("core.utils").map
 -- see: https://github.com/wbthomason/packer.nvim
 -- https://nvchad.github.io/config/walkthrough
 
+vim.cmd [[
+  let g:firenvim_config = {
+      \ 'globalSettings': {
+          \ 'alt': 'all',
+      \  },
+      \ 'localSettings': {
+          \ '.*': {
+              \ 'cmdline': 'neovim',
+              \ 'content': 'text',
+              \ 'priority': 0,
+              \ 'selector': 'textarea',
+              \ 'takeover': 'always',
+          \ },
+      \ }
+  \ }
+]]
+
 -- require "custom.plugins.mkdir"
 require "custom.autocmds"
