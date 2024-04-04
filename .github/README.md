@@ -1,3 +1,5 @@
+<h1>This repo is no longer maintained. Use NvChad/starter instead.</h1>
+
 <h1 align="center">NvChad</h1>
 
 <div align="center">
